@@ -1,13 +1,8 @@
 module.exports = {
     isTypeArray: (typeArr, arr) => arr.every(item => typeof item === typeArr),
-    isNumeric: (value) => {
-        if (typeof value === 'string') return !isNaN(value % 1);
-        return typeof value === 'number';
-    },
-    isObject: (value) => {
-        return typeof value === 'object' && !Array.isArray(value) &&
-            value !== null;
-    },
+    isNumeric: (value) => (typeof value === 'string') ? !isNaN(value % 1) : (typeof value === 'number'),
+    isObject: (value) => typeof value === 'object' && !Array.isArray(value) &&
+        value !== null,
     getValueNested: (obj, keyNested) => {
         keyNested = keyNested.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
         keyNested = keyNested.replace(/^\./, '');           // strip a leading dot
@@ -43,5 +38,14 @@ module.exports = {
         }
         recursive(obj, name)
         return outputObj;
-    }
+    },
+    formatDate: (date) => {
+        const year = date.getFullYear();
+        const month = ((1 + date.getMonth()).toString()).length > 1 ? month : '0' + month;
+        const day = (date.getDate().toString()).length > 1 ? day : '0' + day;
+
+        return day + '/' + month + '/' + year;
+    },
+    removeDiacritics: (str = "") => str.normalize("NFD")?.replace(/\p{Diacritic}/gu, ""),
+    currencyVND: (value) => new Intl.NumberFormat('en-US', { minimumFractionDigits: 3 }).format(value),
 }

@@ -4,7 +4,9 @@ const { validateRequest } = require("../validations/index.validation")
 
 module.exports = {
     getStudent: async (req, res) => {
-        return res.status(200).json(await getStudent())
+        const data = await getStudent();
+        return res.status(data.status === 'success' ? 200 : 500).json(data);
+
     },
     createStudent: async (req, res) => {
         const messagesError = validateRequest({

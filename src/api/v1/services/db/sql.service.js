@@ -12,7 +12,7 @@ module.exports = {
         }
 
         const createTable = async (tableName, fields) => {
-            let columns = [];
+            const columns = [];
             for (const [key, value] of Object.entries(fields)) {
                 if (isStringMySQL(value)) {
                     columns.push(`${key} ${value} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`)
@@ -31,7 +31,7 @@ module.exports = {
             return await execQuery(query);
         }
 
-        const select = async (table, fields = '*', queryAtTheEnd) => {
+        const select = async (table, { fields = '*', queryAtTheEnd = "" }) => {
             const query = `SELECT ${fields} FROM ${table} ${queryAtTheEnd}`;
             return await execQuery(query);
         }

@@ -5,16 +5,9 @@ const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 
 const { initRoutes } = require('./src/api/v1/routes/index.route');
-const configCors = require('./src/configs/cors.config');
 const cookieParser = require('cookie-parser');
-const configWriteLog = require('./src/configs/writeLog.config');
 const { connectMySQL } = require('./src/configs/db/sql.config');
-
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-configWriteLog(app);
+const { configWriteLog, configCors } = require('./src/configs/index.config');
 
 connectMySQL({
     host: process.env.DB_HOST,
@@ -24,6 +17,11 @@ connectMySQL({
     // rowsAsArray: true
 })
 
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+configWriteLog(app);
 configCors(app);
 
 initRoutes(app);

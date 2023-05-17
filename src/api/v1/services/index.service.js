@@ -4,9 +4,15 @@ const { select, insert } = mysqlService();
 module.exports = {
     getStudent: async () => {
         const [row, fields] = await select('student');
+        if (row.length > 0) {
+            return resFormat({
+                message: 'Get student success',
+                data: row
+            });
+        }
         return resFormat({
-            message: 'Get student success',
-            data: row
+            message: 'Get student error',
+            status: 'error'
         });
     },
     createStudent: async (student) => {
