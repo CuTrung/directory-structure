@@ -1,0 +1,9 @@
+GET http://localhost:8000/api/v1/students
+
+# POST http://localhost:8000/api/v1/students
+# Content-Type: application/json
+
+# {
+#     "username": "trung handsome",
+#     "password": "easy"
+# }

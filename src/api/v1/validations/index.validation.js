@@ -1,29 +1,23 @@
-const validateRequest = (objRule, data) => {
-    let messagesError = [];
+const {
+    isTypeArray, isNumeric, isObject, convertObjectToStringNested, getValueNested
+} = require("../utils/index.util");
 
-    for (const [field, rules] of Object.entries(objRule)) {
-        if (isObject(rules)) {
-            const strObjNested = convertObjectToStringNested(rules, field);
-            for (const [fieldObj, rulesObj] of Object.entries(strObjNested)) {
-                const result = getValueNested(data, fieldObj);
-                messagesError = isValidData({ [fieldObj]: rulesObj }, result);
-                if (messagesError.length > 0) return messagesError;
-            }
-        } else if (Array.isArray(rules)) {
-            for (let index = 0; index < rules.length; index++) {
-                messagesError = validateRequest(rules[index], data[field][index]);
-            }
-        } else {
-            messagesError = isValidData({ [field]: rules }, data[field]);
-        }
-
-        if (messagesError.length > 0) return messagesError;
+/**
+ * * RULES:
+ * name: 'required|string:(min:3)|number:(max:4)',
+ * student: {
+    name: 'required|array:(string|number:(min:3))'
+    },
+ * listName: 'array:(number:(min:3)|string)',
+ * listOther: [
+    {
+        name: 'string',
+        age: 'required|number:(max:4)'
     }
+    ],
+ * 
+ */
 
-    return messagesError;
-}
-
-const isTypeArray = (typeArr, arr) => arr.every(item => typeof item === typeArr);
 
 const isValidValue = (condition, value) => {
     let rule = Object.values(condition)[0];
@@ -161,103 +155,38 @@ const isValidData = (condition, data) => {
                 messagesError.length = 0;
                 return messagesError;
             }
+
         }
     }
 
     return messagesError;
 }
 
-
-function isNumeric(value) {
-    if (typeof value === 'string') return !isNaN(value % 1);
-    return typeof value === 'number';
-}
-
-const isObject = (value) => {
-    return typeof value === 'object' && !Array.isArray(value) &&
-        value !== null;
-}
-
-const getValueNested = (obj, keyNested) => {
-    keyNested = keyNested.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-    keyNested = keyNested.replace(/^\./, '');           // strip a leading dot
-    var a = keyNested.split('.');
-    for (var i = 0, n = a.length; i < n; ++i) {
-        var k = a[i];
-        if (k in obj) {
-            obj = obj[k];
-        } else {
-            return;
-        }
-    }
-    return obj;
-}
-
-function getValueLastNested(obj) {
-    if (typeof obj !== 'object') {
-        return obj;
-    }
-    for (prop in obj) {
-        return getValueLastNested(obj[prop])
-    }
-}
-
-const convertObjectToStringNested = (obj, name) => {
-    let outputObj = {};
-    let recursive = (obj, name) => {
-        for (let key in obj) {
-            if (typeof obj[key] == 'object') {
-                recursive(obj[key], name + '.' + key)
+module.exports = {
+    validateRequest: (condition, data) => {
+        let messagesError = [];
+        for (const [field, rules] of Object.entries(condition)) {
+            if (isObject(rules)) {
+                const strObjNested = convertObjectToStringNested(rules, field);
+                for (const [fieldObj, rulesObj] of Object.entries(strObjNested)) {
+                    const result = getValueNested(data, fieldObj);
+                    messagesError = isValidData({ [fieldObj]: rulesObj }, result);
+                    if (messagesError.length > 0) return messagesError;
+                }
+            } else if (Array.isArray(rules)) {
+                for (let index = 0; index < rules.length; index++) {
+                    messagesError = validateRequest(rules[index], data[field][index]);
+                }
             } else {
-                outputObj[name + '.' + key] = obj[key];
+                messagesError = isValidData({ [field]: rules }, data[field]);
             }
+
+            if (messagesError.length > 0) return messagesError;
         }
+
+        return messagesError;
     }
-    recursive(obj, name)
-    return outputObj;
 }
 
-
-
-const messageErrors = validateRequest({
-    // name: 'required|string:(min:3)|number:(max:4)',
-    // student: {
-    //     info: {
-    //         age: 'required|number:(max:4)'
-    //     },
-    //     name: 'required|string:(min:2)'
-    // },
-
-    // listName: 'array:(string|number)',
-    // listName: 'array:(number:(min:3)|string)',
-    // info: {
-    //     student: 'required|array:(string|number:(min:3))'
-    // }
-
-    // listOther: [
-    //     {
-    //         name: 'string',
-    //         age: 'required|number:(max:4)'
-    //     },
-    // ],
-}, {
-    // name: 'trung',
-    // student: {
-    //     info: {
-    //         age: 2
-    //     },
-    //     name: 'trung'
-    // },
-    // listName: [],
-    // info: {
-    //     student: [null, 7, 3]
-    // },
-    // listOther: [
-    //     {
-    //         name: undefined,
-    //         age: 4
-    //     },
-    // ],
-});
 
 
