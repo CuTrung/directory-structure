@@ -1,12 +1,11 @@
-const { getStudent, createStudent } = require("../services/index.service")
-const { resFormat } = require("../utils/api.util")
+const { getStudent, createStudent, getStudentMongo } = require("../services/index.service")
+const { resFormat, RES_STATUS } = require("../utils/api.util")
 const { validateRequest } = require("../validations/index.validation")
 
 module.exports = {
     getStudent: async (req, res) => {
         const data = await getStudent();
-        return res.status(data.status === 'success' ? 200 : 500).json(data);
-
+        return res.status(data.status === RES_STATUS.SUCCESS ? 200 : 500).json(data);
     },
     createStudent: async (req, res) => {
         const messagesError = validateRequest({
@@ -17,7 +16,10 @@ module.exports = {
                 message: messagesError.join(""),
             }))
         }
-        return res.status(200).json(await createStudent(req.body));
+        return res.status(data.status === RES_STATUS.SUCCESS ? 200 : 500).json(await createStudent(req.body));
+    },
+    getStudentMongo: async (req, res) => {
+        const data = await getStudentMongo();
+        return res.status(data.status === RES_STATUS.SUCCESS ? 200 : 500).json(data);
     }
-
 }

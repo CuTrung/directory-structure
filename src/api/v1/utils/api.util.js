@@ -1,6 +1,11 @@
+const RES_STATUS = {
+    SUCCESS: 'success',
+    ERROR: 'error'
+}
 module.exports = {
+    RES_STATUS,
     resFormat: ({
-        status = 'success',
+        status = RES_STATUS.SUCCESS,
         message = 'Something wrong on server...',
         data = ''
     }) => ({ status, message, data }),

@@ -48,4 +48,5 @@ module.exports = {
     },
     removeDiacritics: (str = "") => str.normalize("NFD")?.replace(/\p{Diacritic}/gu, ""),
     currencyVND: (value) => new Intl.NumberFormat('en-US', { minimumFractionDigits: 3 }).format(value),
+    typeOf: (value) => Object.prototype.toString.call(value).slice(8, -1)
 }

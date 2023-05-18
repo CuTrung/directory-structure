@@ -1,6 +1,9 @@
-const { resFormat } = require("../utils/api.util");
+const { resFormat, RES_STATUS } = require("../utils/api.util");
 const { mysqlService } = require("./db/sql.service")
 const { select, insert } = mysqlService();
+const { mongoDBService, redisService } = require("./db/nosql.service");
+const { createModel, getModel } = mongoDBService();
+const { get, setex, update } = redisService();
 module.exports = {
     getStudent: async () => {
         const [row, fields] = await select('student');
@@ -12,7 +15,7 @@ module.exports = {
         }
         return resFormat({
             message: 'Get student error',
-            status: 'error'
+            status: RES_STATUS.ERROR
         });
     },
     createStudent: async (student) => {

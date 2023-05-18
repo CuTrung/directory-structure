@@ -1,9 +1,14 @@
-const { sql } = require("../../../../configs/db/sql.config");
-
+const { db } = require("../../../../configs/db.config");
 module.exports = {
     mysqlService: () => {
         const execQuery = async (query, arrData) => {
-            return await sql.dbMySQL.query(query, arrData);
+            let data = null;
+            try {
+                data = await db.mySQL.query(query, arrData);
+            } catch (error) {
+                console.log(">>> ~ file: sql.service.js:9 ~ execQuery ~ error: ", error)
+            }
+            return data;
         }
 
         const isStringMySQL = (value) => {
@@ -31,7 +36,7 @@ module.exports = {
             return await execQuery(query);
         }
 
-        const select = async (table, { fields = '*', queryAtTheEnd = "" }) => {
+        const select = async (table, { fields = "*", queryAtTheEnd = "" } = {}) => {
             const query = `SELECT ${fields} FROM ${table} ${queryAtTheEnd}`;
             return await execQuery(query);
         }
