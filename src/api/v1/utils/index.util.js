@@ -1,4 +1,4 @@
-module.exports = {
+const that = module.exports = {
     isTypeArray: (typeArr, arr) => arr.every(item => typeof item === typeArr),
     isNumeric: (value) => (typeof value === 'string') ? !isNaN(value % 1) : (typeof value === 'number'),
     isObject: (value) => typeof value === 'object' && !Array.isArray(value) &&
@@ -48,5 +48,10 @@ module.exports = {
     },
     removeDiacritics: (str = "") => str.normalize("NFD")?.replace(/\p{Diacritic}/gu, ""),
     currencyVND: (value) => new Intl.NumberFormat('en-US', { minimumFractionDigits: 3 }).format(value),
-    typeOf: (value) => Object.prototype.toString.call(value).slice(8, -1)
+    typeOf: (value) => Object.prototype.toString.call(value).slice(8, -1),
+    addDays: (date, days) => {
+        const result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return that.formatDate(result);
+    }
 }

@@ -4,6 +4,7 @@ module.exports = {
         const execQuery = async (query, arrData) => {
             let data = null;
             try {
+                console.log(`${query} |||||| ${arrData}`);
                 data = await db.mySQL.query(query, arrData);
             } catch (error) {
                 console.log(">>> ~ file: sql.service.js:9 ~ execQuery ~ error: ", error)
@@ -16,7 +17,7 @@ module.exports = {
             return DATA_TYPE_STRING_MYSQL.includes(value.split('(')[0].replace(" ", "").toUpperCase());
         }
 
-        const createTable = async (tableName, fields) => {
+        const createTable = async (tableName, fields, { timestamp } = {}) => {
             const columns = [];
             for (const [key, value] of Object.entries(fields)) {
                 if (isStringMySQL(value)) {
@@ -26,12 +27,11 @@ module.exports = {
                 }
             }
 
-            const query = `
-            CREATE TABLE IF NOT EXISTS ${tableName} (
-              id INT AUTO_INCREMENT PRIMARY KEY,
-              ${columns.join(", ")}
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-            `;
+            if (timestamp) {
+                columns.push('createdAt DATETIME DEFAULT CURRENT_TIMESTAMP', 'updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+            }
+
+            const query = `CREATE TABLE IF NOT EXISTS ${tableName} (id INT AUTO_INCREMENT PRIMARY KEY, ${columns.join(", ")}) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`;
 
             return await execQuery(query);
         }

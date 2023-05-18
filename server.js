@@ -10,10 +10,10 @@ const { configWriteLog, configCors } = require('./src/configs/index.config');
 const { connectMySQL, connectMongoDB, connectRedis } = require('./src/configs/db.config');
 
 connectMySQL({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: process.env.DB_MYSQL_HOST,
+    user: process.env.DB_MYSQL_USER,
+    password: process.env.DB_MYSQL_PASSWORD,
+    database: process.env.DB_MYSQL_NAME,
 })
 
 
