@@ -1,4 +1,4 @@
-const { db } = require("../../../../configs/db.config")
+const { db } = require("@src/configs/db.config")
 module.exports = {
     mongoDBService: () => {
         const createModel = (documentName, { fields, values } = {}) => {

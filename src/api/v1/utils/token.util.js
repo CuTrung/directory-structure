@@ -1,7 +1,7 @@
 const { hashSync, genSaltSync } = require('bcryptjs');
 const { TokenExpiredError, sign, verify } = require('jsonwebtoken');
 const crypto = require('node:crypto');
-const { formatDate, typeOf } = require('./index.util');
+const { formatDate } = require('./index.util');
 const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
     modulusLength: 2048, // độ mạnh của key
     publicKeyEncoding: {

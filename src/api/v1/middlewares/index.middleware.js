@@ -1,4 +1,4 @@
-const { resFormat } = require("../utils/api.util");
+const { resFormat } = require("@v1/utils/api.util");
 
 module.exports = {
     checkLogin: (req, res, next) => {

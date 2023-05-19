@@ -1,6 +1,6 @@
-const { getStudent, createStudent, getStudentMongo } = require("../services/index.service")
-const { resFormat, RES_STATUS } = require("../utils/api.util")
-const { validateRequest } = require("../validations/index.validation")
+const { getStudent, createStudent, getStudentMongo } = require("@v1/services/index.service")
+const { resFormat, RES_STATUS } = require("@v1/utils/api.util")
+const { validateRequest } = require("@v1/validations/index.validation")
 
 module.exports = {
     getStudent: async (req, res) => {

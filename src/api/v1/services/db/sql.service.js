@@ -1,4 +1,4 @@
-const { db } = require("../../../../configs/db.config");
+const { db } = require("@src/configs/db.config");
 module.exports = {
     mysqlService: () => {
         const execQuery = async (query, arrData) => {
@@ -17,6 +17,7 @@ module.exports = {
             return DATA_TYPE_STRING_MYSQL.includes(value.split('(')[0].replace(" ", "").toUpperCase());
         }
 
+        // Khi có timestamp sẽ tự động tạo 2 cột createdAt and updatedAt
         const createTable = async (tableName, fields, { timestamp } = {}) => {
             const columns = [];
             for (const [key, value] of Object.entries(fields)) {

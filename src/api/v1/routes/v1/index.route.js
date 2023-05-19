@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const studentRouteV1 = require('./student/student.route.v1');
-const { checkVersion } = require('../../middlewares/index.middleware');
+const { checkVersion } = require('@v1/middlewares/index.middleware');
 
 router.route('/student*')
     .all(checkVersion({

@@ -1,6 +1,6 @@
 const {
     isTypeArray, isNumeric, isObject, convertObjectToStringNested, getValueNested
-} = require("../utils/index.util");
+} = require("@v1/utils/index.util");
 
 /**
  * * RULES:

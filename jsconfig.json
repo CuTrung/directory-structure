@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        // "target": "ES2020",
+        // "module": "CommonJS",
+        // "allowSyntheticDefaultImports": true,
+        "baseUrl": "src",
+        // "jsx": "react",
+        // "noImplicitAny": false,
+        "paths": {
+            "@src/configs/*": ["./configs/*"],
+            "@v1/controllers/*": ["./api/v1/controllers/*"],
+            "@v1/logs/*": ["./api/v1/logs/*"],
+            "@v1/middlewares/*": ["./api/v1/middlewares/*"],
+            "@v1/models/*": ["./api/v1/models/*"],
+            "@v1/rest/*": ["./api/v1/rest/*"],
+            "@v1/routes/*": ["./api/v1/routes/*"],
+            "@v1/utils/*": ["./api/v1/utils/*"],
+            "@v1/services/*": ["./api/v1/services/*"],
+            "@v1/validations/*": ["./api/v1/validations/*"]
+        }
+    },
+    "exclude": ["node_modules"]
+}

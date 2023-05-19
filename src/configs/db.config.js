@@ -19,13 +19,6 @@ module.exports = {
             console.log(">>> ~ file: sql.config.js:12 ~ error: ", error)
         }
     },
-    // connectMSSQL: async ({ host, user, password, database, ...option }) => {
-    //     const mssql = require('mssql')
-    //     return await mssql.connect({
-    //         host, user, password, database, ...option
-    //     }).then(pool => pool.request());
-    // }
-
     connectMongoDB: async ({
         host = DEFAULT_HOST,
         user,

@@ -1,4 +1,4 @@
-const { mysqlService } = require("../services/db/sql.service")
+const { mysqlService } = require("@v1/services/db/sql.service")
 const { createTable } = mysqlService();
 
 createTable('New', {
