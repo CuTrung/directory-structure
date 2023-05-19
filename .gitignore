@@ -2,3 +2,4 @@ node_modules
 .vscode
 *.sql
 .env
+src/api/v1/logs/error.log
