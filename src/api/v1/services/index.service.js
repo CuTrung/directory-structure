@@ -27,4 +27,9 @@ module.exports = {
             }
         });
     },
+    getStudentMongo: async () => {
+        return resFormat({
+            message: 'Get student mongo success'
+        })
+    }
 }

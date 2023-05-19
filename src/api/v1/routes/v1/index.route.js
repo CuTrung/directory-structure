@@ -1,13 +1,12 @@
 const express = require('express');
-const { getStudent, createStudent, getStudentMongo } = require('../../controllers/index.controller');
-const { checkLogin } = require('../../middlewares/index.middleware');
 const router = express.Router();
+const studentRouteV1 = require('./student/student.route.v1');
+const { checkVersion } = require('../../middlewares/index.middleware');
 
-router.route('/students')
-    .get(checkLogin, getStudent)
-    .post(createStudent)
+router.route('/student*')
+    .all(checkVersion({
+        '2023-05-19': studentRouteV1
+    }, { defaultVersion: '2023-05-19' }))
 
-router.route('/students/mongo')
-    .get(getStudentMongo)
 
 module.exports = router;

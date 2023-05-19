@@ -1,4 +1,5 @@
-GET http://localhost:8000/api/v1/students
+GET http://localhost:8000/api/
+x-api-version: '2023-19-05'
 
 ###
 POST http://localhost:8000/api/v1/students

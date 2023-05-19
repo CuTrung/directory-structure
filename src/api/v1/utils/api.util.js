@@ -5,9 +5,9 @@ const RES_STATUS = {
 module.exports = {
     RES_STATUS,
     resFormat: ({
-        status = RES_STATUS.SUCCESS,
+        status = RES_STATUS.ERROR,
         message = 'Something wrong on server...',
         data = ''
-    }) => ({ status, message, data }),
+    } = {}) => ({ status, message, data }),
     delay: async (time = 500) => new Promise((resolve) => setTimeout(() => resolve(), time))
 }
