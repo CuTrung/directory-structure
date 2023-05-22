@@ -1,4 +1,5 @@
 const { resFormat } = require("@v1/utils/api.util");
+const { formatDate } = require("@v1/utils/index.util");
 
 module.exports = {
     checkLogin: (req, res, next) => {
@@ -17,5 +18,11 @@ module.exports = {
         }
 
         return payload[version].call(this, req, res, next);
+    },
+    checkInfoClient: (req, res, next) => {
+        const { _startTime, headers: { host }, ip, path, protocol, baseUrl } = req;
+        const userAgent = req.headers['user-agent']
+        const url = protocol + '://' + host + baseUrl;
+        console.log(">>> Check", formatDate(_startTime));
     }
 }

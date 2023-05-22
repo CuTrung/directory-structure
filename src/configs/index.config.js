@@ -19,6 +19,10 @@ module.exports = {
 
         const pathLog = path.join(__dirname.replace("configs", "api\\v1\\logs"), 'error.log');
         const accessLogStream = fs.createWriteStream(pathLog, { flags: 'a' })
-        app.use(morgan('combined', { stream: accessLogStream }))
+        if (app.get('env') == 'production') {
+            app.use(morgan('common', { skip: (req, res) => res.statusCode < 400, stream: accessLogStream }));
+        } else {
+            app.use(morgan('short', { stream: accessLogStream }));
+        }
     }
 }
