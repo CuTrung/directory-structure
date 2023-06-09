@@ -1,3 +1,6 @@
+
+
+
 module.exports = initServer = (app) => {
     require('module-alias/register');
     const { initRoutes } = require('@v1/routes/index.route');
@@ -18,9 +21,7 @@ module.exports = initServer = (app) => {
     //     database: process.env.DB_NAME,
     // })
 
-    // connectRedis({
-    //     host: process.env.DB_HOST,
-    // })
+    // connectRedis();
 
     //  Trả về req.ip thực kể cả khi dùng proxy
     app.set('trust proxy', true);
@@ -28,9 +29,15 @@ module.exports = initServer = (app) => {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
-    configWriteLog(app);
+    // Write error.log with morgan
+    // configWriteLog(app);
     configCors(app);
     initRoutes(app);
+
+    // Use socket in project
+    // app = require('../src/socket/server.socket')(app);
+
+    return app;
 }
 
 

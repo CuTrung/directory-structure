@@ -30,7 +30,8 @@
         "jsonwebtoken": "^9.0.0",
         "module-alias": "^2.2.2",
         "mongoose": "^7.1.1",
-        "mysql2": "^3.3.0"
+        "mysql2": "^3.3.0",
+        "socket.io": "^4.6.1"
     },
     "devDependencies": {
         "morgan": "^1.10.0",
@@ -38,7 +39,8 @@
     },
     "_moduleAliases": {
         "@src": "./src/",
-        "@v1": "src/api/v1/"
+        "@v1": "src/api/v1/",
+        "@skv1": "src/socket/v1/"
     },
     "_moduleDirectories": [
         "node_modules_custom"

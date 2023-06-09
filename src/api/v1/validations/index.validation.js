@@ -1,6 +1,5 @@
-const {
-    isTypeArray, isNumeric, isObject, convertObjectToStringNested, getValueNested
-} = require("@v1/utils/index.util");
+const { isTypeArray, typeOf, TYPES } = require("@v1/utils/index.util");
+const { convertObjectToStringNested, getValueNested } = require("@v1/utils/object.util");
 
 /**
  * * RULES:
@@ -63,7 +62,7 @@ const isValidValue = (condition, value) => {
             }
             return messageError;
         case 'number':
-            if (!isNumeric(value)) return messageError = `${field} is not a numeric`;
+            if (typeOf(value) !== TYPES.NUMBER) return messageError = `${field} is not a numeric`;
 
             if (valuesEqual) {
                 if ('min' in valuesEqual && 'max' in valuesEqual) {
@@ -166,7 +165,7 @@ module.exports = {
     validateRequest: (condition, data) => {
         let messagesError = [];
         for (const [field, rules] of Object.entries(condition)) {
-            if (isObject(rules)) {
+            if (typeOf(value) === TYPES.OBJECT) {
                 const strObjNested = convertObjectToStringNested(rules, field);
                 for (const [fieldObj, rulesObj] of Object.entries(strObjNested)) {
                     const result = getValueNested(data, fieldObj);

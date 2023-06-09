@@ -1,11 +1,11 @@
-const RES_STATUS = {
+const SERVICE_STATUS = {
     SUCCESS: 'success',
     ERROR: 'error'
 }
 module.exports = {
-    RES_STATUS,
-    resFormat: ({
-        status = RES_STATUS.ERROR,
+    SERVICE_STATUS,
+    serviceResult: ({
+        status = SERVICE_STATUS.ERROR,
         message = 'Something wrong on server...',
         data = ''
     } = {}) => ({ status, message, data }),

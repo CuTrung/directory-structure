@@ -2,8 +2,10 @@ module.exports = {
     configCors: (app) => {
         const cors = require('cors');
         const corsOptions = {
+            // Accept cookie
+            credentials: true,
             origin: function (origin, callback) {
-                if (process.env.WHITE_LIST.includes(origin) || origin === undefined) {
+                if (JSON.parse(process.env.WHITE_LIST).includes(origin) || origin === undefined) {
                     callback(null, true)
                 } else {
                     callback(new Error('Not allowed by CORS'))

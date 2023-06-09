@@ -41,7 +41,7 @@ module.exports = {
         password,
         database,
         ...option
-    }) => {
+    } = {}) => {
         try {
             const Redis = require("ioredis");
             db.redis = new Redis({ host, user });

@@ -1,4 +1,4 @@
-const { resFormat, RES_STATUS } = require("@v1/utils/api.util");
+const { serviceResult, SERVICE_STATUS } = require("@v1/utils/api.util");
 const { mysqlService } = require("./db/sql.service")
 const { select, insert } = mysqlService();
 const { mongoDBService, redisService } = require("./db/nosql.service");
@@ -8,19 +8,19 @@ module.exports = {
     getStudent: async () => {
         const [row, fields] = await select('student');
         if (row.length > 0) {
-            return resFormat({
-                status: RES_STATUS.SUCCESS,
+            return serviceResult({
+                status: SERVICE_STATUS.SUCCESS,
                 message: 'Get student success',
                 data: row
             });
         }
-        return resFormat({
+        return serviceResult({
             message: 'Get student error',
         });
     },
     createStudent: async (student) => {
         const [row, fields] = await insert('student', student);
-        return resFormat({
+        return serviceResult({
             message: 'Created student success',
             data: {
                 username: student.username
@@ -28,7 +28,7 @@ module.exports = {
         });
     },
     getStudentMongo: async () => {
-        return resFormat({
+        return serviceResult({
             message: 'Get student mongo success'
         })
     }

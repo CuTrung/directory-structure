@@ -16,7 +16,11 @@
             "@v1/routes/*": ["./api/v1/routes/*"],
             "@v1/utils/*": ["./api/v1/utils/*"],
             "@v1/services/*": ["./api/v1/services/*"],
-            "@v1/validations/*": ["./api/v1/validations/*"]
+            "@v1/validations/*": ["./api/v1/validations/*"],
+            "@skv1/controllers/*": ["./socket/v1/controllers/*"],
+            "@skv1/middlewares/*": ["./socket/v1/middlewares/*"],
+            "@skv1/routes/*": ["./socket/v1/routes/*"],
+            "@skv1/services/*": ["./socket/v1/services/*"]
         }
     },
     "exclude": ["node_modules"]

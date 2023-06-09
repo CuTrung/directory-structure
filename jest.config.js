@@ -9,7 +9,11 @@ module.exports = {
         "^@v1/routes/(.*)$": "<rootDir>/src/api/v1/routes/$1",
         "^@v1/utils/(.*)$": "<rootDir>/src/api/v1/utils/$1",
         "^@v1/services/(.*)$": "<rootDir>/src/api/v1/services/$1",
-        "^@v1/validations/(.*)$": "<rootDir>/src/api/v1/validations/$1"
+        "^@v1/validations/(.*)$": "<rootDir>/src/api/v1/validations/$1",
+        "^@skv1/controllers/(.*)$": "<rootDir>/src/api/v1/controllers/$1",
+        "^@skv1/middlewares/(.*)$": "<rootDir>/src/api/v1/middlewares/$1",
+        "^@skv1/routes/(.*)$": "<rootDir>/src/api/v1/routes/$1",
+        "^@skv1/services/(.*)$": "<rootDir>/src/api/v1/services/$1",
     },
     // Other configs
 }
