@@ -1,0 +1,22 @@
+<p>
+    <h3>Thông tin phiếu chi</h3>
+    <strong>Mã phiếu chi:</strong> {{this.paymentslip_code}}<br />
+  <strong>Ngày chi:</strong> {{this.payment_date}}<br />
+  <b>Công ty:</b> {{this.company_name}}<br />
+  <strong>Miền:</strong> {{this.business_name}}<br />
+  <strong>Loại chi:</strong> {{this.expend_type.name}}<br />
+  <strong>Người chi:</strong> {{this.payer_id}}-{{this.payer_name}}<br />
+  <strong>Người nhận:</strong> {{this.receiver_name}}<br />
+  <strong>Trạng thái thanh toán:</strong> {{this.payment_status_name}}<br />
+  <strong>Hình thức thanh toán:</strong> {{this.payment_type_name}}<br />
+ 
+  <strong>Nội dung chi:</strong> {{this.notes}}<br />
+  <strong>Ghi chú chi:</strong> {{this.descriptions}}<br />
+  <strong>Tổng tiền: </strong><b>{{this.total_money_text}}</b><br />
+  <br />
+  <a
+  target="_blank"
+  href="{{this.review_link}}"
+  ><b>{{# if this.is_review }} Duyệt {{else}} Xem {{/if}} phiếu chi</b></a
+  >
+</p>

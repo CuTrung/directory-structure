@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+    api-portal:
+        image: shopdunk-api
+        build: .
+        ports:
+            - 3001:3001
+        restart: unless-stopped

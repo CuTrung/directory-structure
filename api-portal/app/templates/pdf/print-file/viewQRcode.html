@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Phiếu chuyển kho</title>
+    <meta charset="UTF-8">
+</head>
+    <body style="margin: 0; padding: 0; font-size: 13px; background: #f2f2f2; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        <% var products = data.products; %>
+        <% for(var i = 0; i < products.length; i++) { %>
+            <% for(var j = 0; j < products[i].total_barcode; j++) { %>
+                    <div class="qr_code_ejs" style="width: 35mm; height: 15mm; background: #fff; border-radius: 1mm; margin: 5px auto; overflow: hidden;">
+                        <img style="width: 13mm; height: 13mm; margin-top: 1mm; margin-left: 0.5mm; float: left;" 
+                        src="<%= products[i].src %>"
+                        >
+                        <div style="float: right; width: 21mm;">
+                            <% var fields = products[i].fields; %>
+                            <% for(var z = 0; z < fields.length; z++) { %>
+                                <% var field = fields[z]; %>
+                                <p data-bold="<%= field.isBold %>" class="qr_content" style="margin: 0; padding: 0; font-size: 6px; padding: 0.4mm 0; padding-right: 1mm;">
+                                    <%= `${field.startStr ?? ''} ${products[i][field.key]} ${field.endStr ?? ''}` %>
+                                </p>
+                            <% } %>
+                        </div>
+                    </div>
+            <% } %>
+        <% } %>
+    </body>
+
+
+
+<script data-width="<%= data.width  %>" data-height="<%= data.height  %>" >
+    for (const item of document.querySelectorAll('.qr_code_ejs')) {
+        item.style.width = `${document.currentScript.dataset.width}mm`
+        item.style.height = `${document.currentScript.dataset.height}mm`
+        for (const c of item.querySelectorAll('.qr_content')) {
+            if(c.dataset.bold === 'true') c.style.fontWeight = 'bold';
+        }
+    }
+</script>
+
+</html>

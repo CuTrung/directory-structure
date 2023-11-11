@@ -1,0 +1,28 @@
+:root {
+  /** Site Color **/
+  --mainColor: #576CBC;
+  --secondColor: #0B2447;
+  --borderColor: #dddddd;
+  --menuColor: #EEEEEE;
+  --borderMenuColor: #19376D;
+  /** Default Color **/
+  --blackColor: #333;
+  --blackColorHover: #111111;
+  --blueColor: #2F80ED;
+  --blueColorHover: #175db8;
+  --greenColor: #31BE94;
+  --greenColorHover: #1EA57C;
+  --grayColor: #f8f8f8;
+  --grayColorHover: #f0f0f0;
+  --ogranceColor: #F2994A;
+  --ogranceColorHover: #db7d2b;
+  --redColor: #EC2D41;
+  --redColorHover: #ca192b;
+  --whiteColor: #ffffff;
+  --whiteColorHover: #f2f2f2;
+  --yellowColor: #FFFF00;
+  --yellowColorHover: #d0d005;
+  --transparent: transparent;
+  --pinkColor: #DD37EC;
+  --violetColor: #6726BA;
+}/*# sourceMappingURL=var.css.map */

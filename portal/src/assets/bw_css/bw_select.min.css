@@ -1,0 +1,110 @@
+* {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  
+  .select {
+    position:relative;
+    outline:none;
+    margin-top: 5px;
+    width: 100%;
+    margin-right: 10px;
+  }
+  
+  .select .value {
+    padding: 7px 14px;
+    border-radius: 4px;
+    outline: none;
+    width: 100%;
+    display: block;
+    background: #fff;
+    height: 38px;
+    padding-right: 30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .select .value::before {
+    position: absolute;
+    top: 45%;
+    right: 10px;
+    margin: -2px 0;
+    width: 0;
+    height: 0;
+    content: "";
+    border-radius: 3px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #6a6a71 transparent transparent;
+  }
+  
+  .select .list {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:0;
+    background:#fff;
+    opacity:0;
+    outline:none;
+    -webkit-box-shadow:0 2px 9px rgba(0,0,0,0.35);
+    box-shadow:0 2px 9px rgba(0,0,0,0.35);
+    overflow:hidden;
+    -webkit-transition:opacity 0.25s cubic-bezier(0.39,0.575,0.565,1);
+    transition:opacity 0.25s cubic-bezier(0.39,0.575,0.565,1);
+    z-index:9999;
+    min-width: 220px;
+  }
+  
+  .select .list.open {
+    height:auto;
+    opacity:1.0;
+    top: 100% !important
+  }
+  
+  .select .list .filter {
+    display:none;
+    padding:3px 10px;
+  }
+  
+  .select .list .filter input {
+    padding: 7px 20px;
+  }
+  
+  .select .list ul {
+    display:block;
+    margin:0;
+    padding:0;
+  }
+  
+  .select .list ul li {
+    display:block;
+    list-style:none;
+    color:#1f202a;
+    padding: 8px 20px;
+    cursor:pointer;
+  }
+  
+  .select .list ul li:hover,
+  .select .list ul li.hovered {
+    color:#fff;
+    background:#335292;
+  }
+  
+  .select.large .filter {
+    display:block;
+  }
+  .select.large .filter input{
+    width: 100%;
+    border: 1px solid #ccc;
+    outline: none;
+    max-width: unset !important;
+    font-family: inherit;
+    font-size: 16px;
+  }
+  
+  .select.large .list ul {
+    max-height:200px;
+    overflow-y:scroll;
+  }

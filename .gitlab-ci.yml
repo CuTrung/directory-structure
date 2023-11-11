@@ -1,0 +1,46 @@
+variables:
+  DEVTEST_DIR: "/home/bwe_dev/shopdunk/test"
+
+stages:
+  - build
+  - deploy
+
+build_api_portal_dev:
+  tags:
+    - runner-170
+  stage: build
+  only:
+    refs:
+      - develop
+    variables:
+      - $CI_COMMIT_DESCRIPTION =~ /(api|all).*/
+      - $CI_COMMIT_MESSAGE =~ /(api|all).*/
+  script:
+    # - echo "Runing build image api portal"
+    # - cp "$DEVTEST_DIR/env/.env.apiportal.dev" ./api-portal/.env
+    # - docker build -t shopdunk_api_portal_dev_img ./api-portal
+    # - echo "Build image api success"
+
+    - echo "Runing build image api portal"
+    - git fetch --all
+    - CHANGED_FILES=$(git diff --name-only $CI_COMMIT_REF_NAME $CI_COMMIT_BEFORE_SHA)
+    - for file in $CHANGED_FILES; do
+        # Rebuild only $file
+      done
+    - echo "Build image api success"
+
+deploy_api_portal_dev:
+  tags:
+    - runner-170
+  stage: deploy
+  only:
+    refs:
+      - develop
+    variables:
+      - $CI_COMMIT_DESCRIPTION =~ /(api|all).*/
+      - $CI_COMMIT_MESSAGE =~ /(api|all).*/
+  script:
+    - echo "Runing deploy api"
+    - docker stop shopdunk_api_portal_dev_container || true && docker rm shopdunk_api_portal_dev_container || true
+    - docker run -d --restart unless-stopped -v "$DEVTEST_DIR/cdn/storage":/usr/src/api/storage -p 127.0.0.1:4501:3001 --name shopdunk_api_portal_dev_container shopdunk_api_portal_dev_img
+    - echo "Deploy api success!!!"

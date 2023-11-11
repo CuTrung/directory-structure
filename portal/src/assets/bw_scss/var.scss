@@ -1,0 +1,71 @@
+:root {
+    /** Site Color **/
+    --mainColor: #576CBC;
+    --secondColor: #0B2447; 
+    --borderColor: #dddddd;
+    --menuColor: #EEEEEE;
+    --borderMenuColor: #19376D;
+    /** Default Color **/
+    --blackColor: #333;
+    --blackColorHover: #111111;
+    --blueColor: #2F80ED;
+    --blueColorHover: #175db8;
+    --greenColor: #31BE94; 
+    --greenColorHover: #1EA57C;
+    --grayColor: #f8f8f8; 
+    --grayColorHover: #f0f0f0;
+    --ogranceColor: #F2994A;
+    --ogranceColorHover: #db7d2b;
+    --redColor: #EC2D41;
+    --redColorHover: #ca192b;
+    --whiteColor: #ffffff;
+    --whiteColorHover: #f2f2f2;
+    --yellowColor: #FFFF00;
+    --yellowColorHover: #d0d005;
+    --transparent: transparent;
+    --pinkColor: #DD37EC;
+    --violetColor: #6726BA;
+}
+$numberPading: 5px;
+$fontSize: 14px; 
+$position: right left center;
+$pos: absolute relative unset fixed;
+$color: blue green black ogrance  yellow red violet pink white gray;
+$display: block inline inline-block inline-flex none;
+$boxShadow: 0 0 30px rgba(212, 161, 161, 0.25);
+
+@mixin BlackwindTransition($duration) {
+    transition: all $duration;
+}
+@mixin flex {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: stretch;
+}
+@mixin BlackwindButton($colorBackground, $colorText, $colorBorder) {
+    @include BlackwindTransition(300ms);
+    padding: 7px 15px;
+    border-radius: 7px;
+    font-size: $fontSize; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    color: $colorText;
+    border: 1px solid $colorBorder;
+    background: $colorBackground;
+}
+@mixin BlackwindInput($colorBackground, $colorText, $colorBorder) {
+    @include BlackwindTransition(300ms);
+    padding: 7px 15px;
+    border-radius: 7px;
+    font-size: $fontSize;
+    width: 100%;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    color: $colorText;
+    border: 1px solid $colorBorder;
+    background: $colorBackground; 
+} 
