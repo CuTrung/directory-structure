@@ -8,7 +8,8 @@
   "scripts": {
     "format": "eslint . --fix",
     "prod": "node --watch index.js",
-    "dev": "node --env-file .env --watch --inspect --trace-warnings index.js",
+    "dev": "node --env-file .env --watch --trace-warnings index.js",
+    "debug": "node --env-file .env --watch --inspect --trace-warnings index.js",
     "test": "jest"
   },
   "repository": {
@@ -32,7 +33,6 @@
     "bullmq": "^1.55.1",
     "cache-manager": "^2.10.0",
     "cache-manager-fs": "^1.0.8",
-    "canvas": "^2.11.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "crypto-js": "^3.1.9-1",

@@ -1,5 +1,4 @@
 const logger = require('../classes/logger.class');
-const mssql = require('../../models/mssql');
 const sql = require('mssql');
 const { db } = require('../../../config/db.config');
 

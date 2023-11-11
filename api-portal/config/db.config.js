@@ -64,4 +64,23 @@ module.exports = {
             console.log('>>> error', error);
         }
     },
+    connectPostgreSQL: async ({ 
+        host = DB_PG_HOST ?? DEFAULT_HOST, 
+        user = DB_PG_USER ?? 'postgres', 
+        password = DB_PG_PASS, database = DB_PG_NAME, port = DB_PG_PORT, ...options } = {}) => {
+        try {
+            const { Pool  } = require('pg');
+            db.postgres = new Pool({
+                user,
+                host,
+                database,
+                password,
+                port,
+                ...options
+              })
+              console.log('>>> Connect PostgreSQL success');
+        } catch (error) {
+            console.log('>>> error', error);
+        }
+    },
 };

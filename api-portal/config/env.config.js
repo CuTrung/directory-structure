@@ -4,7 +4,6 @@ const { convertEnvToArray } = require('../app/common/utils/array.util');
 const rules = {
     NODE_ENV: ['develop*', 'staging', 'production', 'testing'],
     APP_URL: [],
-    HASH_SECRET_KEY: [],
     DOMAIN_CDN: [],
     DOMAIN_SERVICE: [],
 };
