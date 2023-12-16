@@ -4,10 +4,11 @@
 
 #### Template commit:
 
-> `action[@module]: activity + #issue`
+> `action[module]: description + #issue`
 >
 > - action: fix, feat, refactor, chore, update, ...
 > - module: module name
-> - issue: issue fixing
+> - description: describe what is commit do
+> - issue: issue fixing (optional)
 >
 >   **_VD: chore(@News): update UI #3_**
