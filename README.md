@@ -8,6 +8,6 @@
 >
 > - action: fix, feat, refactor, chore, update, ...
 > - module: module name
-> - issue: issue fixing (#12)
+> - issue: issue fixing
 >
->   VD: chore(@News): update UI #3
+>   _VD: chore(@News): update UI #3_
