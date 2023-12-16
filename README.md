@@ -1,4 +1,4 @@
-![alt text](https://github.com/CuTrung/directory-structure/blob/express/image.jpg?raw=true)
+![alt text](https://github.com/CuTrung/directory-structure/assets/git_workflow.drawio.png?raw=true)
 Cách đặt tên:
 
 - Store Procedure: nếu làm cho portal thì mình sẽ đặt prefix là AdminWeb, còn làm cho Web thì sẽ đăt la Web
