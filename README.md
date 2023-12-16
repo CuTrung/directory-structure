@@ -1,9 +1,7 @@
-#
-
 ![alt text](https://github.com/CuTrung/directory-structure/blob/express/assets/git_workflow.drawio.png?raw=true)
 Cách đặt tên:
 
-#
+<br/>
 
 - Store Procedure: nếu làm cho portal thì mình sẽ đặt prefix là AdminWeb, còn làm cho Web thì sẽ đăt la Web
 - Tên store thường đặt theo nghiệp vụ và theo tên Bảng: ví dụ làm về account thì sẽ như này: CRM_ACCOUNT_CreateOrUpdate_AdminWeb ,......
