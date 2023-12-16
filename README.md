@@ -2,9 +2,11 @@
 
 #
 
-- Template commit: `action[@module]: activity + #issue`
+> #### Template commit:
+>
+> `action[@module]: activity + #issue`
 
-* action: fix, feat, refactor, chore, update, ...
-* module: module name
-* issue: issue fixing (#12)
-  VD: chore(@News): update UI #3
+> - action: fix, feat, refactor, chore, update, ...
+> - module: module name
+> - issue: issue fixing (#12)
+>   VD: chore(@News): update UI #3
