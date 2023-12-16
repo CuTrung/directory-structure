@@ -10,4 +10,4 @@
 > - module: module name
 > - issue: issue fixing
 >
->   _VD: chore(@News): update UI #3_
+>   **_VD: chore(@News): update UI #3_**
