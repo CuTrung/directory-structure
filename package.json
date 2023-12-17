@@ -13,10 +13,6 @@
     "format": "eslint --fix .",
     "prepare-husky": "husky install && npx husky add .husky/pre-commit \"npm run format && npm run test\" && git add .husky/pre-commit && npx husky add .husky/commit-msg \"npx commitlint --edit $1\""
   },
-  "repository": {
-    "type": "git",
-    "url": "http://27.71.224.44/git/ruby-api.git"
-  },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
