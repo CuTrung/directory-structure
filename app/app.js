@@ -10,7 +10,6 @@ const fs = require("fs");
 require("util").inspect.defaultOptions.depth = null;
 const ev = require("express-validation");
 const compression = require("compression");
-const routes = require("./index.routes");
 const {
   mergeResponse,
   pageNotFound,
@@ -54,7 +53,7 @@ const init = (app) => {
   }
 
   // mount all routes on /api path
-  app.use("/api", routes);
+  app.use("/api", require("./index.routes"));
 
   // catch 404 and forward to error handler
   app.use(pageNotFound);
