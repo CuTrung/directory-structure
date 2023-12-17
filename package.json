@@ -11,7 +11,7 @@
     "test": "jest",
     "prod": "npm start",
     "format": "eslint --fix .",
-    "prepare-husky": "husky install && npx husky add .husky/pre-commit \"npm run format && npm run test\" && git add .husky/pre-commit && npx husky add .husky/commit-msg \"npx commitlint --edit $1\""
+    "prepare-husky": "husky install && npx husky add .husky/pre-push \"npm run format && npm run test\" && git add .husky/pre-commit && npx husky add .husky/commit-msg \"npx commitlint --edit $1\""
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
