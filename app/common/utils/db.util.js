@@ -29,6 +29,7 @@ const transaction = async (callback) => {
 const execProcedure = async (procedureName, data = {}, reqTrans) => {
   const totalFields = Object.keys(data);
   const req = reqTrans ?? db.MSSQL.request();
+  req.parameters = [];
   if (totalFields.length > 0) {
     for (const field of totalFields) {
       req.input(field, data[field]);
