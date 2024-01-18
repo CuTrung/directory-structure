@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // "target": "ES2020",
+    // "module": "CommonJS",
+    // "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    // "jsx": "react",
+    // "noImplicitAny": false,
+    "paths": {
+      "components": ["./src/components/"],
+      "public": ["./public/"],
+      "pages": ["./src/pages"],
+      "reduxApp": ["./src/redux"],
+      "routers": ["./src/routers"],
+      "context": ["./src/context"],
+      "utils": ["./src/utils"],
+      "services": ["./src/services"],
+      "navigation": ["./src/navigation"],
+      "hooks": ["./src/hooks"],
+      "layouts": ["./src/layouts"],
+    },
+  },
+  "exclude": ["node_modules"],
+}
