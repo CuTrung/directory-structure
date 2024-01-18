@@ -5,18 +5,13 @@ import { useCallback } from 'react';
 
 const _ignoredRoutes = ['/', '/change-password'];
 
-function useVerifyAccess(props) {
+function useVerifyAccess() {
   const { user } = useAuth();
 
   const verifyPermission = useCallback(
     (permission, any = false) => {
       if (any) return true;
-      const { functions = [] } = user;
-      let _function = functions.find((_func) => {
-        let funcUC = (_func + '').toUpperCase().trim();
-        return funcUC === permission;
-      });
-      return !!_function;
+      return Boolean(user?.functions?.find((func) => func?.toUpperCase()?.trim() === permission));
     },
     [user],
   );
@@ -27,17 +22,11 @@ function useVerifyAccess(props) {
       let ignoredRoute = null;
       if (user && !user.isAdministrator) {
         if (!route && location) {
-          route = routes.find((_route) => {
-            let result = matchPath(location.pathname, _route);
-            return !!result;
-          });
+          route = routes.find((_route) => Boolean(matchPath(location.pathname, _route)));
         }
 
         if (route) {
-          ignoredRoute = _ignoredRoutes.find((_pathname) => {
-            let result = matchPath(_pathname, route);
-            return !!result;
-          });
+          ignoredRoute = _ignoredRoutes.find((_pathname) => Boolean(matchPath(_pathname, route)));
         }
 
         if (route && !ignoredRoute) {

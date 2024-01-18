@@ -1,0 +1,16 @@
+.custom-editor-text {
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+    }
+
+    em {
+        font-style: italic;
+    }
+    
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.ul``;
 
@@ -22,7 +22,7 @@ const RowMenu = styled.span`
 `;
 
 function MenuRecursive({ items, openKey, setOpenKey, recursiveOpenKey, hiddenIconOpen }) {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <Wrapper>
       {items.map((item) => {
@@ -33,7 +33,7 @@ function MenuRecursive({ items, openKey, setOpenKey, recursiveOpenKey, hiddenIco
               onClick={(e) => {
                 e.preventDefault();
                 if (!item.children) {
-                  history.push(item.path);
+                  navigate(item.path);
                   recursiveOpenKey(item.key);
                 } else {
                   setOpenKey({

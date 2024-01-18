@@ -1,23 +1,5 @@
-import Page404 from "pages/PageError/Page404";
-
-const otherPages = [
-  {
-    path: "/404",
-    exact: true,
-    name: "Trang không tồn tại",
-    component: Page404,
-  },
-];
 const initRoutes = () => {
   try {
-    // const routeFiles = import.meta.glob("../pages/**/*.route.js");
-    // return routeFiles
-    //   .keys()
-    //   .map(routeFiles)
-    //   .map(({ default: routes }) => routes)
-    //   .flat()
-    //   .concat(otherPages);
-
     const routeContext = import.meta.glob("../pages/**/*.route.js");
     const routes = Object.keys(routeContext)
       .map((key) => {

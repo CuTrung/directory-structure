@@ -1,11 +1,10 @@
 import React from "react";
 import useVerifyAccess from "hooks/useVerifyAccess";
-import { redirect, useLocation } from "react-router-dom";
+import { useLocation, useNavigate  } from "react-router-dom";
 import { useAuth } from "context/AuthProvider";
-// import BWLoader from 'components/shared/BWLoader';
 import styled from "styled-components";
 
-const DefaultLayout = React.lazy(() => import("../layouts/DefaultLayout"));
+const DefaultLayout = React.lazy(() => import("./DefaultLayout"));
 
 const LoadingImage = styled.img`
   display: block;
@@ -26,18 +25,12 @@ const BackgroundLoading = styled.div`
   );
 `;
 
-function VerifyAccess(props) {
-  const location = useLocation();
+function Pages(props) {
   const { initializing } = useAuth();
+  const location = useLocation();
   const { verify } = useVerifyAccess(props);
-
-  const _render = () => {
-    const _verify = verify(null, location);
-
-    if (typeof _verify !== "boolean") return redirect(`/500/${_verify}`);
-
-    return _verify ? <DefaultLayout {...props} /> : redirect("/login");
-  };
+  const navigate = useNavigate();
+  const _verify = verify(null, location);
 
   if (initializing) {
     return (
@@ -46,7 +39,11 @@ function VerifyAccess(props) {
       </BackgroundLoading>
     );
   }
-  return <React.Fragment>{_render()}</React.Fragment>;
+
+  if (typeof _verify !== "boolean") return navigate(`/500/${_verify}`);
+  
+  // return _verify ? <DefaultLayout {...props} /> : navigate('/login');
+  return <DefaultLayout {...props} />;
 }
 
-export default VerifyAccess;
+export default Pages;

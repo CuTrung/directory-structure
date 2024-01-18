@@ -2,12 +2,11 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import routes from 'routers';
 import { formatter } from 'utils';
 import { useDispatch } from 'react-redux';
-import { useLocation, useHistory } from 'react-router-dom';
-import pathToRegexp from 'path-to-regexp';
+import { useLocation, useNavigate } from 'react-router-dom';
 import NotifyCommon from './notify/NotifyCommon';
 
 const NavHeader = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [routerMap, setRouterMap] = useState([]);
@@ -51,9 +50,9 @@ const NavHeader = () => {
   const getPageTitle = useMemo(() => {
     let currRouterData = null;
     Object.keys(routerMap).forEach((key) => {
-      if (pathToRegexp(key).test(pathname)) {
-        currRouterData = routerMap[key];
-      }
+      // if (pathToRegexp(key).test(pathname)) {
+      //   currRouterData = routerMap[key];
+      // }
     });
     if (!currRouterData) {
       return '';
@@ -70,7 +69,7 @@ const NavHeader = () => {
               cursor: 'pointer',
             }}
             onClick={() => {
-              history.goBack();
+              navigate(-1)
             }}
             className='fi fi-rr-angle-circle-left'></i>
         </a>

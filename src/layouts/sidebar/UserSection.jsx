@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { showConfirmModal } from 'reduxApp/actions/global';
 import { COOKIE_JWT } from 'utils/constants';
 import { setCookie } from 'utils/cookie';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UserSectionStyle = styled.div`
   position: relative;
@@ -48,7 +48,7 @@ const UserSectionStyle = styled.div`
 
 export const UserSection = ({ setIsChangePassword }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const menuUser = useMemo(
     () => [
       {
@@ -76,7 +76,7 @@ export const UserSection = ({ setIsChangePassword }) => {
                   async () => {
                     e.preventDefault();
                     setCookie(COOKIE_JWT, undefined);
-                    history.push('/logout');
+                    navigate('/logout');
                   },
                   'Đồng ý',
                 ),
@@ -93,8 +93,7 @@ export const UserSection = ({ setIsChangePassword }) => {
 
   const { user } = useAuth();
   return (
-    <>
-      <UserSectionStyle>
+      <UserSectionStyle key={''} >
         <div className='bw_user_admin bw_flex bw_align_items_center'>
           <img
             alt=''
@@ -111,6 +110,5 @@ export const UserSection = ({ setIsChangePassword }) => {
           <div className='user__section__dropdown'>{menuUser.map((o) => o.label)}</div>
         </div>
       </UserSectionStyle>
-    </>
   );
 };

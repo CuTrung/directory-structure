@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -9,7 +8,7 @@ const Error = styled.div`
   font-size: 80%;
   color: #f86c6b;
 `;
-const ErrorMessage = ({ message }) => {
+const ErrorMessage = ({ message = '' }) => {
   return <Error>{message}</Error>;
 };
 ErrorMessage.propTypes = {
