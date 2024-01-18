@@ -5,8 +5,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
-  Object.assign(globalThis, env);
+  Object.assign(globalThis, loadEnv(mode, process.cwd(), ''));
   
   return defineConfig({
     plugins: [react()],
