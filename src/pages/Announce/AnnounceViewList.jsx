@@ -8,16 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCountNotRead } from './actions/index';
 import ModalAnnounceView from './components/ModalAnnounceView';
 import useScroll from 'hooks/use-scroll';
-import { useHistory, useParams } from 'react-router-dom';
-import { getErrorMessage } from 'utils/index';
-import { defaultParams } from 'utils/helpers';
+import { useParams } from 'react-router-dom';
 
 const AnnounceViewList = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   let { id: announceId } = useParams();
   const [currentAnnounceId, setCurrentAnnounceId] = useState();
-  const [params, setParams] = useState(defaultParams);
+  const [params, setParams] = useState();
   const announceViewListRef = useRef(null);
   const [data, setData] = useState([]);
   const [isScroll] = useScroll(announceViewListRef);
@@ -70,18 +67,12 @@ const AnnounceViewList = () => {
 
   const handleChangeAnnounceView = async (value) => {
     try {
-      history.push(`/notification/detail/${value.announce_id}`);
-    } catch (error) {
-      getErrorMessage(error);
-    }
+    } catch (error) {}
   };
 
   const handleChangeRouter = () => {
     try {
-      if (!announceId && data && data.length > 0) history.push(`/notification/detail/${currentAnnounceId}`);
-    } catch (error) {
-      getErrorMessage(error);
-    }
+    } catch (error) {}
   };
   useEffect(() => {
     handleChangeRouter();

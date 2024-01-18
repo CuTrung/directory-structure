@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo } from 'react';
-import { showConfirmModal } from 'actions/global';
 import { useDispatch } from 'react-redux';
 import { deleteAnnounce } from '../helpers/call-api';
 import DataTable from 'components/shared/DataTable/index';
@@ -127,12 +126,7 @@ const AnnounceTable = ({ loading, data, totalPages, itemsPerPage, page, totalIte
         icon: 'fi fi-rr-trash',
         color: 'red',
         permission: 'SYS_ANNOUNCE_DEL',
-        onClick: (_, d) =>
-          dispatch(
-            showConfirmModal(['Bạn có thực sự muốn xóa?', 'Bạn sẽ mất dữ liệu này và các dữ liệu liên quan.'], () =>
-              handleDelete(_.announce_id),
-            ),
-          ),
+        onClick: (_, d) => {},
       },
     ];
   }, []);

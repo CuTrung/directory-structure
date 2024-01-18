@@ -7,7 +7,6 @@ import { DatePicker } from 'antd';
 import FilterSearchBar from 'components/shared/FilterSearchBar/index';
 import FormSelect from 'components/shared/BWFormControl/FormSelect';
 import FormInput from 'components/shared/BWFormControl/FormInput';
-import { showToast, statusReviewOption } from 'utils/helpers';
 import { getListAnnounceTypeOptions } from '../helpers/call-api';
 
 const { RangePicker } = DatePicker;
@@ -63,9 +62,7 @@ const AnnounceFilter = ({ onChange }) => {
       }));
 
       setListAnnounceTypeOptions(data);
-    } catch (error) {
-      showToast.error('Có lỗi xảy ra.')
-    }
+    } catch (error) {}
   };
   useEffect(() => {
     getDataFilter();
@@ -101,7 +98,7 @@ const AnnounceFilter = ({ onChange }) => {
           },
           {
             title: 'Trạng thái',
-            component: <FormSelect field='is_review' list={statusReviewOption} />,
+            component: <FormSelect field='is_review' list={[]} />,
           },
         ]}
       />

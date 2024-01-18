@@ -3,8 +3,6 @@ import { Image } from 'antd';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import defaultImage from 'assets/bw_image/default_img.png';
-
 const ImageStyled = styled(Image)`
   :where(.css-dev-only-do-not-override-12upa3x).ant-image .ant-image-mask:hover {
     opacity: 1 !important;
@@ -34,7 +32,7 @@ BWImage.propTypes = {
 
 BWImage.defaultProps = {
   src: null,
-  fallbackSrc: defaultImage,
+  fallbackSrc: '',
   className: '',
   alt: '',
 };

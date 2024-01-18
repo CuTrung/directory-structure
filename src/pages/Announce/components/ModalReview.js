@@ -3,7 +3,6 @@ import { useForm, FormProvider } from 'react-hook-form';
 import FormTextArea from 'components/shared/BWFormControl/FormTextArea';
 import { REVIEW_TYPE } from '../utils/constants';
 import { approvedReview } from '../helpers/call-api';
-import { showToast } from 'utils/helpers';
 
 export default function ModalReview({ itemReviewLevel, setShowModalReview, onRefresh }) {
   const methods = useForm();
@@ -16,14 +15,10 @@ export default function ModalReview({ itemReviewLevel, setShowModalReview, onRef
   const handleApprove = async (value) => {
     try {
       if (!watch('review_level.review_note')) {
-        showToast.warning('Ghi chú duyệt là bắt buộc!');
         return;
       }
       await approvedReview({ ...watch('review_level'), type: value });
-      showToast.success('Cập nhật trạng thái duyệt thành công!');
-    } catch (error) {
-      showToast.error('Đã có lỗi xảy ra. Vui lòng F5 thử lại!');
-    }
+    } catch (error) {}
     setShowModalReview(false);
     onRefresh();
   };

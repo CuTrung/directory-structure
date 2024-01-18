@@ -5,6 +5,8 @@ const Announce = React.lazy(() => import('pages/Announce/Announce'));
 const AnnounceAdd = React.lazy(() => import('pages/Announce/AnnounceAdd'));
 const AnnounceEdit = React.lazy(() => import('pages/Announce/AnnounceEdit'));
 const AnnounceDetail = React.lazy(() => import('pages/Announce/AnnounceDetail'));
+const AnnounceChildren = React.lazy(() => import('pages/Announce/AnnounceChildren'));
+const AnnounceChildren2 = React.lazy(() => import('pages/Announce/AnnounceChildren2'));
 
 const announceRoute = [
   {
@@ -13,13 +15,21 @@ const announceRoute = [
     name: 'Danh sách thông báo',
     function: 'SYS_ANNOUNCE_VIEW',
     component: Announce,
-  },
-  {
-    path: '/announce/add',
-    exact: true,
-    name: 'Thêm mới thông báo',
-    function: 'SYS_ANNOUNCE_ADD',
-    component: AnnounceAdd,
+    children: [
+      {
+        path: '/:id',
+        name: 'Thêm mới thông báo',
+        function: 'SYS_ANNOUNCE_ADD',
+        component: AnnounceChildren,
+      },
+      {
+        index: true,
+        path: '/:id',
+        name: 'Thêm mới thông báo',
+        function: 'SYS_ANNOUNCE_ADD',
+        component: AnnounceChildren2,
+      },
+    ],
   },
   {
     path: '/announce/edit/:id',

@@ -1,10 +1,10 @@
-import React from "react";
-import useVerifyAccess from "hooks/useVerifyAccess";
-import { useLocation, useNavigate  } from "react-router-dom";
-import { useAuth } from "context/AuthProvider";
-import styled from "styled-components";
-
-const DefaultLayout = React.lazy(() => import("./DefaultLayout"));
+import React from 'react';
+import useVerifyAccess from 'hooks/useVerifyAccess';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from 'context/AuthProvider';
+import styled from 'styled-components';
+import { Route } from 'react-router-dom';
+import routes from 'routers';
 
 const LoadingImage = styled.img`
   display: block;
@@ -17,12 +17,7 @@ const BackgroundLoading = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(
-    109.6deg,
-    rgb(36, 45, 57) 11.2%,
-    rgb(16, 37, 60) 51.2%,
-    rgb(0, 0, 0) 98.6%
-  );
+  background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
 `;
 
 function Pages(props) {
@@ -40,10 +35,12 @@ function Pages(props) {
     );
   }
 
-  if (typeof _verify !== "boolean") return navigate(`/500/${_verify}`);
-  
+  if (typeof _verify !== 'boolean') return navigate(`/500/${_verify}`);
+
   // return _verify ? <DefaultLayout {...props} /> : navigate('/login');
-  return <DefaultLayout {...props} />;
+  return routes.map((route) => (
+    <Route key={new Date().getTime()} path={route.path} exact={route.exact} element={route.component} />
+  ));
 }
 
 export default Pages;

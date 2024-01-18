@@ -1,24 +1,8 @@
-const initRoutes = () => {
-  try {
-    const routeContext = import.meta.glob("../pages/**/*.route.js");
-    const routes = Object.keys(routeContext)
-      .map((key) => {
-        const match = key.match(/\.\/(.+)\/(.+)\.route\.js$/);
-        if (match) {
-          const [, folder, fileName] = match;
-          return {
-            path: `/${folder}/${fileName}`,
-            component: () => import(`../pages/${folder}/${fileName}.route.js`),
-          };
-        }
-        return null;
-      })
-      .filter(Boolean);
-    return routes;
-  } catch (error) {
-    console.error(">>> init route error", error);
-    return [];
-  }
-};
-
-export default initRoutes();
+const routeContext = import.meta.glob('../pages/**/*.route.js');
+const routes = [];
+const modules = Object.values(routeContext);
+for (const module of modules) {
+  const route = await module().then(({ default: route }) => route);
+  routes.push(route);
+}
+export default routes.flat();

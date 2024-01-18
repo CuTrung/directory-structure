@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCountNotRead } from 'pages/Announce/actions';
 
 import styled from 'styled-components';
-import { getErrorMessage } from 'utils/index';
-import defaultImage from '../../../assets/bw_image/default_img.png'
 const Section = styled.a`
   background: ${(props) => (props.isActive ? '#DEF1EE' : undefined)};
 `;
@@ -19,32 +17,24 @@ const LineTwo = styled.p`
 
 const SpanSection = styled.span`
   display: block;
-  font-size: 12px;  
+  font-size: 12px;
 `;
-const ModalAnnounceView = ({
-  announce,
-  announceId,
-  handleChangeAnnounceView,
-}) => {
+const ModalAnnounceView = ({ announce, announceId, handleChangeAnnounceView }) => {
   const dispatch = useDispatch();
   let countNotRead = useSelector((state) => state.announce.countNotRead);
-  
-  const handleReadAnnounce = async (value) => {
 
+  const handleReadAnnounce = async (value) => {
     try {
       if (value.is_read === 0) {
-        let payload = {}
+        let payload = {};
         payload.count = countNotRead - 1;
-        dispatch(setCountNotRead(payload))
+        dispatch(setCountNotRead(payload));
         value.is_read = 1;
         value.total_view += 1;
       }
-    } catch (error) {
-      getErrorMessage(error);
-    }
+    } catch (error) {}
   };
 
-  
   return (
     <Section
       isActive={announceId == announce?.announce_id}
@@ -53,20 +43,26 @@ const ModalAnnounceView = ({
         handleReadAnnounce(announce);
         handleChangeAnnounceView(announce);
       }}>
-      <img src={announce?.default_picture_url} onError={(e)=>{
-        e.onerror = null;
-        e.target.src = defaultImage;
-      }}/>
+      <img
+        src={announce?.default_picture_url}
+        onError={(e) => {
+          e.onerror = null;
+        }}
+      />
       <h3>
         {announce.created_user} - {announce.fullname}
       </h3>
       <SpanSection>{announce.created_date}</SpanSection>
-      <h2><LineTwo>{announce.announce_title}</LineTwo></h2>
+      <h2>
+        <LineTwo>{announce.announce_title}</LineTwo>
+      </h2>
       <p>
-        <span className='fi fi-rr-eye' /> {announce.total_view}        
-        {announce.is_read === 1 ?       
-            <span className='bw_badge right'>Đã xem</span>
-            : <span className='bw_badge bw_badge_primary right'>Chưa xem</span>}
+        <span className='fi fi-rr-eye' /> {announce.total_view}
+        {announce.is_read === 1 ? (
+          <span className='bw_badge right'>Đã xem</span>
+        ) : (
+          <span className='bw_badge bw_badge_primary right'>Chưa xem</span>
+        )}
       </p>
     </Section>
   );

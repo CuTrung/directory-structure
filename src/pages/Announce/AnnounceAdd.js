@@ -7,7 +7,6 @@ import { AnnounceContent, AnnounceInfo } from './components/AnnounceForm';
 import AnnounceSendUser from './components/AnnounceSendUser';
 import AnnounceReview from './components/AnnounceReview';
 import AnnounceAttachment from './components/AnnounceAttachment';
-import { showToast } from 'utils/helpers';
 
 const AnnounceAdd = () => {
   const methods = useForm({});
@@ -48,10 +47,7 @@ const AnnounceAdd = () => {
           is_send_to_all: 1,
         });
       }
-      showToast.success(`${label} thành công!!!`);
-    } catch (error) {
-      showToast.error(error ? error.message : 'Có lỗi xảy ra!');
-    }
+    } catch (error) {}
   };
 
   const loadDetail = useCallback(() => {

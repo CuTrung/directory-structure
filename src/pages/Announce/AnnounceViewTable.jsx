@@ -1,11 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { createAnnounceUserView, downloadAttachment, getAnnounceView } from './helpers/call-api';
 import { notification } from 'antd';
-import { getErrorMessage } from 'utils/index';
 import _ from 'lodash';
-import _500img from 'assets/502.png';
-import Loading from 'components/shared/Loading/index';
-import './styles/custom.scss';
 import BWImage from 'components/shared/BWImage';
 
 const AnnounceViewTable = ({ announce_id }) => {
@@ -17,9 +13,7 @@ const AnnounceViewTable = ({ announce_id }) => {
       if (value.is_read === 0) {
         await createAnnounceUserView(value);
       }
-    } catch (error) {
-      getErrorMessage(error);
-    }
+    } catch (error) {}
   };
   const loadDetail = useCallback(() => {
     setLoading(true);
@@ -52,7 +46,6 @@ const AnnounceViewTable = ({ announce_id }) => {
     }
   };
   if (loading) {
-    return <Loading />;
   } else if (announceData && !_.isEmpty(announceData))
     return (
       <div className='bw_detail_notice'>
@@ -81,7 +74,6 @@ const AnnounceViewTable = ({ announce_id }) => {
     return (
       <div className='bw_detail_notice'>
         <div className='bw_text_center'>
-          <img src={_500img} alt={2} style={{ width: '90%' }} />
           <h2>Bạn không có quyền xem thông báo này!</h2>
         </div>
       </div>

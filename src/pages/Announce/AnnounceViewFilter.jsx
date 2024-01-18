@@ -14,7 +14,9 @@ const AnnounceViewFilter = ({ onChange }) => {
           methods.handleSubmit(onChange)(e);
         }}>
         <FormInput field='search' placeholder='Tiêu đề, nội dung thông báo' className='bw_inp' />
-        <button type='submit' className='bw_btn bw_btn_success'>Tìm kiếm</button>
+        <button type='submit' className='bw_btn bw_btn_success'>
+          Tìm kiếm
+        </button>
       </form>
     </FormProvider>
   );
