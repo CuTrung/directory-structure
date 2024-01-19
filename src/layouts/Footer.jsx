@@ -1,14 +1,9 @@
 import { Layout } from 'antd';
 
-const { Footer } = Layout;
-const FooterView = () => (
-  <Footer style={{ padding: 0 }}>
-    <div className='globalFooter'>
-      Copyright © {new Date().getFullYear()}{' '}
-      <a href='https://blackwind.vn/' target={'_blank'} rel='noreferrer'>
-        Blackwind Software Solution
-      </a>
-    </div>
-  </Footer>
+const { Footer: FooterLayout } = Layout;
+const Footer = () => (
+  <FooterLayout style={{ textAlign: 'center', position: 'sticky', bottom: 0 }}>
+    Ant Design ©{new Date().getFullYear()} Created by Ant UED
+  </FooterLayout>
 );
-export default FooterView;
+export default Footer;

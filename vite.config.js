@@ -17,7 +17,7 @@ export default ({ mode }) => {
         components: path.resolve(__dirname, './src/components/'),
         public: path.resolve(__dirname, './public/'),
         pages: path.resolve(__dirname, './src/pages'),
-        reduxApp: path.resolve(__dirname, './src/redux'),
+        reduxApp: path.resolve(__dirname, './src/reduxApp'),
         routers: path.resolve(__dirname, './src/routers'),
         context: path.resolve(__dirname, './src/context'),
         utils: path.resolve(__dirname, './src/utils'),

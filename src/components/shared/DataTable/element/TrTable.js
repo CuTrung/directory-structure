@@ -1,4 +1,4 @@
-import CheckAccess from 'navigation/CheckAccess';
+import CheckAccess from 'components/shared/CheckAccess';
 import React, { useCallback, useState } from 'react';
 import { Empty } from 'antd';
 import styled from 'styled-components';

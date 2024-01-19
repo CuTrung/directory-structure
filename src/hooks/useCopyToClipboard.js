@@ -14,7 +14,6 @@ function useCopyToClipboard(message = 'Đã sao chép') {
     } catch (error) {
       setCopiedText(null);
       toast.error(`Sao chép thất bại !`);
-      console.error('Copy failed', error);
       return false;
     }
   };

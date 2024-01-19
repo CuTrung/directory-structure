@@ -8,7 +8,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import BWButton from '../BWButton';
 import PropTypes from 'prop-types';
 import routes from 'routers';
-import CheckAccess from 'navigation/CheckAccess';
+import CheckAccess from 'components/shared/CheckAccess';
 import styled from 'styled-components';
 
 const Footer = styled.div``;
@@ -212,7 +212,7 @@ FormSection.propTypes = {
 FormSection.defaultProps = {
   loading: false,
   detailForm: {},
-  onSubmit: () => { },
+  onSubmit: () => {},
   disabled: false,
   noActions: false,
 };

@@ -1,15 +1,12 @@
-import AppRouter from "routers/AppRouter";
-import { store } from "reduxApp/store";
-import { Provider } from "react-redux";
-import { AuthProvider } from "context/AuthProvider";
-import { ReactToastify } from "components/shared/ReactToastify/ReactToastify";
+import { store } from 'reduxApp/store';
+import { Provider } from 'react-redux';
+import AppRouter from 'routers/AppRouter';
+import { ReactToastify } from 'components/shared/ReactToastify/ReactToastify';
 
 const App = () => (
   <Provider store={store}>
-    <AuthProvider>
-      <AppRouter />
-      <ReactToastify />
-    </AuthProvider>
-   </Provider>
+    <AppRouter />
+    <ReactToastify />
+  </Provider>
 );
 export default App;

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState, useEffect } from 'react';
 import BWButton from '../BWButton';
 import PropTypes from 'prop-types';
-import CheckAccess from 'navigation/CheckAccess';
+import CheckAccess from 'components/shared/CheckAccess';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { InputNumber } from 'antd';
