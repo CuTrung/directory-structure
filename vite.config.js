@@ -25,6 +25,7 @@ export default ({ mode }) => {
         navigation: path.resolve(__dirname, './src/navigation'),
         hooks: path.resolve(__dirname, './src/hooks'),
         layouts: path.resolve(__dirname, './src/layouts'),
+        configs: path.resolve(__dirname, './src/configs'),
       },
     },
     esbuild: {

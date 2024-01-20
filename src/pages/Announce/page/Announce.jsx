@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from '../redux/announce.reducer';
 import { useNavigate, useOutlet } from 'react-router-dom';
+import { getProfile } from '../announce.service';
 
 const Announce = () => {
   const outlet = useOutlet();
   const count = useSelector((state) => state.announce.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getProfile().then((data) => {
+      console.log('>>> data', data);
+    });
+  }, []);
   return (
     <>
       <h1>Hello parent</h1>
