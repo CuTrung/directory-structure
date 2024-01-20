@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 import { Editor } from '@tinymce/tinymce-react';
-import { readImageAsBase64 } from 'utils/helpers';
+import { readImageAsBase64 } from 'utils/helpers.util';
 import ErrorMessage from './ErrorMessage';
 
 // import { fnPost } from "../../../utils/api"

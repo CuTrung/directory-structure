@@ -1,7 +1,7 @@
-import { COOKIE_JWT } from 'utils/constants';
-import { getCookie, setCookie } from 'utils/cookie';
 import axios from 'axios';
-const API_URL_ROOT = globalThis.VITE_REACT_APP_API_URL_ROOT;
+import { getCookie, setCookie } from './cookie.util';
+import { COOKIE_JWT } from './constants.util';
+const API_URL_ROOT = globalThis.VITE_API_URL_ROOT;
 const API_AUTH_REFRESH_TOKEN = 'auth/refresh-token';
 const convertApiErrData = (data) => {
   if (!Array.isArray(data.errors) || data.errors.length === 0) return data;
@@ -78,4 +78,6 @@ const httpClient = () => {
   return instance;
 };
 
-export default httpClient();
+const { get: getApi, patch: pathApi, post: postApi, put: putApi, delete: deleteApi } = httpClient();
+
+export { getApi, pathApi, postApi, putApi, deleteApi };

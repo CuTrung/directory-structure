@@ -1,3 +1,3 @@
-import httpClient from 'utils/httpClient.js';
+import { getApi } from 'utils';
 
-export const getProfile = () => httpClient.get('auth/get-profile');
+export const getProfile = () => getApi('auth/get-profile');

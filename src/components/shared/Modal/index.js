@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import BWButton from '../BWButton/index';
 import styled from 'styled-components';
-import { isFunctionComponent } from 'utils/helpers';
+import { isFunctionComponent } from 'utils/helpers.util';
 
 const ModalStyled = styled.div`
   .bw_modal_container {

@@ -7,22 +7,21 @@ import { HomeOutlined } from '@ant-design/icons';
 const Breadcrumb = ({ separator = '>' } = {}) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const breadcrumbs = useMemo(
-    () =>
-      routers
-        ?.filter(
-          (route) => pathname.includes(route.path) && (route.is_breadcrumb === undefined ? true : route.is_breadcrumb),
-        )
-        ?.map((item) => ({
-          title: item.name,
-          href: '',
-          onClick: (e) => {
-            e.preventDefault();
-            navigate(item.path);
-          },
-        })),
-    [pathname],
-  );
+  const breadcrumbs = useMemo(() => {
+    const breadcrumbs = [];
+    for (const route of routers) {
+      if (!(pathname.includes(route.path) && (route.is_breadcrumb ?? true ? true : route.is_breadcrumb))) continue;
+      breadcrumbs.push({
+        title: route.name,
+        href: '',
+        onClick: (e) => {
+          e.preventDefault();
+          navigate(route.path);
+        },
+      });
+    }
+    return breadcrumbs;
+  }, [pathname]);
   return (
     <BreadcrumbAntd
       separator={separator}

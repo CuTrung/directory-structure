@@ -1,10 +1,10 @@
 import React from 'react';
-import useVerifyAccess from 'hooks/useVerifyAccess';
 import { Route } from 'react-router-dom';
 import routers from 'routers';
 import HomePage from 'layouts/HomePage';
 import Login from 'pages/Login';
 import Errors from 'layouts/ErrorsPage';
+import useVerifyAccess from 'hooks/useVerifyAccess';
 
 const homePageRouter = { path: '/', component: HomePage, exact: true };
 

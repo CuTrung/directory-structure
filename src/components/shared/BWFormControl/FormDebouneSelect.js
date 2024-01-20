@@ -5,7 +5,7 @@ import ErrorMessage from './ErrorMessage';
 import { Select, Spin } from 'antd';
 import { useFormContext } from 'react-hook-form';
 import { CaretDownOutlined, LoadingOutlined } from '@ant-design/icons';
-import { mapDataOptions } from 'utils/helpers';
+import { mapDataOptions } from 'utils/helpers.util';
 import styled from 'styled-components';
 
 const SelectStyle = styled(Select)`

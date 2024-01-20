@@ -27,3 +27,5 @@ export const toast = {
   info: (message) => execToast(TYPE_TOAST.INFO, message),
   warning: (message) => execToast(TYPE_TOAST.WARNING, message),
 };
+
+export const hello = () => {};

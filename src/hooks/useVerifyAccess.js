@@ -1,4 +1,4 @@
-import { toUpperCase } from 'utils/string.helper';
+import { toUpperCase } from 'utils/string.util';
 
 function useVerifyAccess() {
   // const { user } = useAuth();

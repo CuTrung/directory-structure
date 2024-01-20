@@ -1,4 +1,4 @@
-import { convertToListOptions } from './helpers';
+import { convertToListOptions } from './helpers.util';
 
 export const COOKIE_JWT = 'token';
 
