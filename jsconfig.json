@@ -10,7 +10,7 @@
       "components": ["./src/components/"],
       "public": ["./public/"],
       "pages": ["./src/pages"],
-      "reduxApp": ["./src/redux"],
+      "reduxApp": ["./src/reduxApp"],
       "routers": ["./src/routers"],
       "context": ["./src/context"],
       "utils": ["./src/utils"],
@@ -20,5 +20,5 @@
       "layouts": ["./src/layouts"],
     },
   },
-  "exclude": ["node_modules"],
+  "exclude": ["**/node_modules/*", ".git", ".npm", "**/.cache/*", "**/.tmp/*", "**/dist/*", "**/build/*"],
 }
