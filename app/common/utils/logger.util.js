@@ -3,16 +3,11 @@ const WinstonGraylog2 = require("winston-graylog2");
 const { createLogger, format, transports } = require("winston");
 const { combine, timestamp, printf, label, prettyPrint } = format;
 require("winston-daily-rotate-file");
-const fs = require("fs");
-const path = require("path");
-const logDir = path.normalize(`${APP_DIR_ROOT}/storage/logs`);
 const os = require("os");
+const { createDirectory } = require("./file.util");
 var hostname = os.hostname();
 
-// Create the log directory if it does not exist
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-}
+const logDir = createDirectory("logs");
 
 const configGrayLog = {
   name: "Graylog",

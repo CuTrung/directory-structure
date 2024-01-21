@@ -1,5 +1,4 @@
 const SingleResponse = require("./single.response");
-const PagedList = require("../classes/pagedList.class");
 
 class ListResponse extends SingleResponse {
   /**
@@ -11,8 +10,11 @@ class ListResponse extends SingleResponse {
    * @param {number} itemsPerPage - Items per page.
    */
   constructor(items = [], totalItems = 0, page = 1, itemsPerPage = 25) {
-    const listData = new PagedList(items, totalItems, page, itemsPerPage);
-    super(listData);
+    this.items = items;
+    this.totalItems = totalItems;
+    this.page = page;
+    this.totalPages = Math.ceil(totalItems / itemsPerPage);
+    this.itemsPerPage = itemsPerPage;
   }
 }
 

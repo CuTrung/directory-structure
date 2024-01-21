@@ -1,6 +1,6 @@
 const userService = require("./user.service");
 const { formatResponse, TYPES_RES } = require("../../common/utils/api.util");
-const logger = require("../../common/classes/logger.class");
+const logger = require("../../common/utils/logger.util");
 
 const getListUser = async (req, res, next) => {
   try {

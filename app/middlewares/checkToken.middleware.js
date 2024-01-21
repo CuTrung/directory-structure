@@ -1,7 +1,4 @@
-const RESPONSE_MSG = require("../common/const/responseMsg.const");
-const jwt = require("jsonwebtoken");
 const httpStatus = require("http-status");
-const config = require("../../config/index.config");
 
 const ErrorResponse = require("../common/responses/error.response");
 const { verifyJWT } = require("../common/utils/token.util");
@@ -33,7 +30,7 @@ module.exports = async (req, res, next) => {
       new ErrorResponse(
         httpStatus.UNAUTHORIZED,
         "",
-        RESPONSE_MSG.AUTH.LOGIN.TOKEN_REQUIRED,
+        'Token required',
       ),
     );
 

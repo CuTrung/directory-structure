@@ -1,5 +1,5 @@
 const { capitalizeFirstLetter } = require("./string.util");
-const logger = require("../classes/logger.class");
+const logger = require("./logger.util");
 
 const TYPES = {
   NUMBER: "Number",
