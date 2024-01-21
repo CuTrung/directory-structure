@@ -12,7 +12,8 @@
     "prod": "node build",
     "build": "webpack .",
     "format": "eslint --fix .",
-    "init-husky": "husky install && npx husky add .husky/pre-push \"npm run test && npm run format\" && git add .husky/pre-push && npx husky add .husky/commit-msg \"npx commitlint --edit $1\""
+    "init-husky": "husky install && npx husky add .husky/pre-push \"npm run test && npm run format\" && git add .husky/pre-push && npx husky add .husky/commit-msg \"npx commitlint --edit $1\"",
+    "postinstall": "npm run init-husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
