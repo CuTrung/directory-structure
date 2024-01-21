@@ -133,4 +133,6 @@ dist
 *.rest
 *.rest.*
 
-*build
+# build
+build/
+.husky
