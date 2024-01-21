@@ -4,7 +4,7 @@ const userController = require("./user.controller");
 const validate = require("express-validation");
 
 const routes = express.Router();
-const prefix = "/test";
+const prefix = "/user";
 
 routes.route("").get(validate(getUser), userController.getListUser);
 

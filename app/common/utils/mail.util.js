@@ -1,6 +1,4 @@
 const nodemailer = require("nodemailer");
-const smtpTransport = require("nodemailer-smtp-transport");
-const config = require("../../../config/index.config");
 
 const send = async (mail) => {
   const transporter = nodemailer.createTransport({
@@ -9,13 +7,13 @@ const send = async (mail) => {
     ignoreTLS: false,
     secure: false,
     auth: {
-      user: config.mail.MAIL_SMTP_USER,
-      pass: config.mail.MAIL_SMTP_PASSWORD,
+      user: MAIL_SMTP_USER,
+      pass: MAIL_SMTP_PASSWORD,
     },
   });
 
   let options = {
-    from: config.mail.MAIL_FROM,
+    from: MAIL_FROM,
     to: mail.to,
     subject: mail.subject,
     html: mail.html,
