@@ -27,11 +27,7 @@ module.exports = async (req, res, next) => {
   const { authorization } = req.headers;
   if (!(authorization && /^Bearer /.test(authorization)))
     return next(
-      new ErrorResponse(
-        httpStatus.UNAUTHORIZED,
-        "",
-        'Token required',
-      ),
+      new ErrorResponse(httpStatus.UNAUTHORIZED, "", "Token required"),
     );
 
   const token = authorization.replace("Bearer ", "");
