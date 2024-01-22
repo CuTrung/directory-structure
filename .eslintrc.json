@@ -7,8 +7,8 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-
   "env": {
     "es6": true
-  }
+  },
+  "ignorePatterns": ["dist"]
 }
