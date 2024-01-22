@@ -1,4 +1,3 @@
-const Joi = require("joi");
 const { Number } = require("../../common/utils/validate.util");
 
 const createUser = {

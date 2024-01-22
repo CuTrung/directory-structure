@@ -8,7 +8,4 @@ const prefix = "/user";
 
 routes.route("").get(validate(getUser), userController.getListUser);
 
-module.exports = {
-  prefix,
-  routes,
-};
+module.exports = { [prefix]: routes };
