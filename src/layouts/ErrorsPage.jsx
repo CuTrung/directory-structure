@@ -1,5 +1,5 @@
 import { Button, Result } from 'antd';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useLocation, useRouteError } from 'react-router-dom';
 import { routers } from 'routers';
 

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useOutlet } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 import { Layout, theme } from 'antd';
-const { Content, Sider } = Layout;
+const { Content } = Layout;
 
 const HomePage = () => {
   const [collapsed, setCollapsed] = useState(false);

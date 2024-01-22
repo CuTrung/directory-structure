@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from '../redux/announce.reducer';
 import { useNavigate, useOutlet } from 'react-router-dom';

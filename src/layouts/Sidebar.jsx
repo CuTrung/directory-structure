@@ -9,7 +9,7 @@ const items = [UserOutlined, VideoCameraOutlined].map((icon, index) => ({
   label: `nav ${index + 1}`,
 }));
 
-const Sidebar = ({ collapsed }) => {
+const Sidebar = ({ collapsed } = {}) => {
   return (
     <Sider
       trigger={null}

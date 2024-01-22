@@ -1,7 +1,6 @@
-import React from 'react';
 import { Route } from 'react-router-dom';
 import HomePage from 'layouts/HomePage';
-import Login from 'pages/Login';
+import Login from 'pages/Common/Login';
 import Errors from 'layouts/ErrorsPage';
 import useVerifyAccess from 'hooks/useVerifyAccess';
 import { routers } from 'routers';

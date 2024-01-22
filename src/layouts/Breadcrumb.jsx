@@ -21,7 +21,7 @@ const Breadcrumb = ({ separator = '>' } = {}) => {
       });
     }
     return breadcrumbs;
-  }, [pathname]);
+  }, [pathname, navigate]);
   return (
     <BreadcrumbAntd
       separator={separator}

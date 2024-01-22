@@ -1,16 +1,5 @@
 import { isFunction } from 'lodash';
 import { toast as funcToast } from 'react-toastify';
-const options = {
-  position: 'top-right',
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: 'colored',
-};
-
 const TYPE_TOAST = {
   SUCCESS: 'success',
   ERROR: 'error',
@@ -18,14 +7,12 @@ const TYPE_TOAST = {
   WARNING: 'warning',
 };
 
-const execToast = (type = TYPE_TOAST.INFO, message = 'Đây là thông báo') =>
+const execToast = (type = TYPE_TOAST.INFO, message = 'Đây là thông báo', options) =>
   funcToast[type](isFunction(message) ? message() : message, options);
 
 export const toast = {
-  success: (message) => execToast(TYPE_TOAST.SUCCESS, message),
-  error: (message) => execToast(TYPE_TOAST.ERROR, message),
-  info: (message) => execToast(TYPE_TOAST.INFO, message),
-  warning: (message) => execToast(TYPE_TOAST.WARNING, message),
+  success: (message, options) => execToast(TYPE_TOAST.SUCCESS, message, options),
+  error: (message, options) => execToast(TYPE_TOAST.ERROR, message, options),
+  info: (message, options) => execToast(TYPE_TOAST.INFO, message, options),
+  warning: (message, options) => execToast(TYPE_TOAST.WARNING, message, options),
 };
-
-export const hello = () => {};

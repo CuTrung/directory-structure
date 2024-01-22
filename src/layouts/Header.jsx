@@ -3,7 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { Layout } from 'antd';
 const { Header: HeaderLayout } = Layout;
-const Header = ({ collapsed, setCollapsed }) => {
+const Header = ({ collapsed, setCollapsed } = {}) => {
   return (
     <HeaderLayout
       style={{
