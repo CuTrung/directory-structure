@@ -1,8 +1,8 @@
 import { Breadcrumb as BreadcrumbAntd } from 'antd';
 import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import routers from 'routers';
 import { HomeOutlined } from '@ant-design/icons';
+import { routers } from 'routers';
 
 const Breadcrumb = ({ separator = '>' } = {}) => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { Button, Result } from 'antd';
 import React, { useRef } from 'react';
 import { useLocation, useRouteError } from 'react-router-dom';
-import routers from 'routers';
+import { routers } from 'routers';
 
 const statusInstance = [
   { status: 404, title: 'Not Found' },
