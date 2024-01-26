@@ -1,6 +1,6 @@
 const logger = require("./logger.util");
 const sql = require("mssql");
-const { db } = require("../../config/db.config");
+const { db } = require("../../configs/db.config");
 
 const transaction = async (callback) => {
   const trans = new sql.Transaction(db.MSSQL);

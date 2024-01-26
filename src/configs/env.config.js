@@ -54,7 +54,7 @@ module.exports = function initConfigEnvs() {
   if (error) throw new Error(`Config validation error: ${error.message}`);
   Object.assign(global, {
     ...value,
-    APP_DIR_ROOT: __dirname.replace("config", ""),
+    APP_DIR_ROOT: __dirname.replace("configs", ""),
     WHITE_LIST: convertEnvToArray(value.WHITE_LIST),
   });
 };

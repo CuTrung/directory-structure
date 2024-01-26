@@ -1,7 +1,7 @@
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
-require("./config/index.config");
+require("./configs");
 const { errorHandler } = require("./middlewares/error-handler.middleware");
 const useragent = require("express-useragent");
 const express = require("express");
@@ -53,7 +53,7 @@ const init = (app) => {
   }
 
   // mount all routes on /api path
-  app.use("/api", require("./index.routes"));
+  app.use("/api", require("./routers"));
 
   // catch 404 and forward to error handler
   app.use(pageNotFound);

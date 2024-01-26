@@ -1,5 +1,5 @@
 const expressApp = require("express")();
-const init = require("./app/app");
+const init = require("./src/app");
 const app = init(expressApp);
 
 app.listen(PORT, () =>
