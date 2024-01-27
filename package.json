@@ -9,6 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prod": "npm run build && npm run preview",
+    "i-prod": "npm i --ignore-scripts",
     "test": "echo 'running test'",
     "init-husky": "husky install && npx husky add .husky/pre-push \"npm run test && npm run lint\" && git add .husky/pre-push && npx husky add .husky/commit-msg \"npx commitlint --edit $1\"",
     "postinstall": "npm run init-husky"
