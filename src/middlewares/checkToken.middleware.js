@@ -3,37 +3,37 @@ const httpStatus = require("http-status");
 const ErrorResponse = require("../common/responses/error.response");
 const { verifyJWT } = require("../common/utils/token.util");
 const prefix = "/api";
-const ROUTE_NOT_CHECK = [
-  `${prefix}`,
-  `${prefix}/auth/token`,
-  `${prefix}/auth/refresh-token`,
+const ROUTERS_NOT_CHECK = [
   `${prefix}/auth/logout`,
 ];
 
-const REGEX_ROUTE_NOT_CHECK = ["/uploads/*", "/pdf*"];
+const REGEX_ROUTERS_NOT_CHECK = ["/uploads/*", "/pdf*"];
+
+const isNextRoute = (route = '') => {
+  if (
+    ROUTERS_NOT_CHECK.includes(route) ||
+    REGEX_ROUTERS_NOT_CHECK.find(regex => new RegExp(regex).test(route))
+  ) return true;
+  return false;
+}
 
 module.exports = async (req, res, next) => {
-  const path = req.path;
 
-  // Exclude routes don't need check
-  if (ROUTE_NOT_CHECK.includes(path)) return next();
-
-  // Exclude regex routes don't need check
-  for (const regex of REGEX_ROUTE_NOT_CHECK) {
-    if (new RegExp(regex).test(path)) return next();
-  }
+  return next();
+  const route = req.path;
+  if (isNextRoute(route)) return next();
 
   // Get authorization header
   const { authorization } = req.headers;
   if (!(authorization && /^Bearer /.test(authorization)))
-    return next(
-      new ErrorResponse(httpStatus.UNAUTHORIZED, "", "Token required"),
-    );
+    return next(new ErrorResponse(httpStatus.UNAUTHORIZED, null, "Token required"));
 
   const token = authorization.replace("Bearer ", "");
   const decoded = verifyJWT(token, JWT_PUBLIC_KEY);
 
   if (!decoded) return next(new ErrorResponse(httpStatus.UNAUTHORIZED, null));
+
+  if (decoded.expiredAt) return next(new ErrorResponse(httpStatus.UNAUTHORIZED, { expiredAt: decoded.expiredAt }, "Token expired"));
 
   req.body = { ...req.body, ...decoded };
   return next();

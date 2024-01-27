@@ -1,12 +1,11 @@
-const bodyParser = require("body-parser");
+require("./configs");
+const { json, urlencoded } = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
-require("./configs");
-const { errorHandler } = require("./middlewares/error-handler.middleware");
+const logger = require("morgan");
+const { errorHandler } = require("./middlewares/errorHandler.middleware");
 const useragent = require("express-useragent");
 const express = require("express");
-const path = require("path");
-const fs = require("fs");
 require("util").inspect.defaultOptions.depth = null;
 const ev = require("express-validation");
 const compression = require("compression");
@@ -14,6 +13,7 @@ const {
   mergeResponse,
   pageNotFound,
 } = require("./middlewares/utils.middleware");
+const { createDirectory } = require("./common/utils/file.util");
 // assign options
 ev.options({
   status: 422,
@@ -22,8 +22,8 @@ ev.options({
 
 const init = (app) => {
   // parse body params and attache them to req.body
-  app.use(bodyParser.json({ limit: "50mb" }));
-  app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+  app.use(json({ limit: "50mb" }));
+  app.use(urlencoded({ limit: "50mb", extended: true }));
   // secure apps by setting various HTTP headers
   app.use(helmet());
 
@@ -36,20 +36,18 @@ const init = (app) => {
   // parse information user agent
   app.use(useragent.express());
 
-  const logDir = path.normalize(`${APP_DIR_ROOT}/storage`);
-  if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir);
-  }
-
-  app.use(express.static(`${APP_DIR_ROOT}/storage`, { index: false }));
+  const staticPath = createDirectory('storage');
+  app.use(express.static(staticPath, { index: false }));
 
   app.use(mergeResponse);
 
+  const isDevelop = NODE_ENV === "develop";
+
+  app.use(logger(isDevelop ? "dev" : "combined"));
+
   // parse validation error nicely
-  if (NODE_ENV !== "testing") {
+  if (!isDevelop) {
     app.use(require("./middlewares/checkToken.middleware"));
-    const logger = require("morgan");
-    app.use(logger(NODE_ENV === "develop" ? "dev" : "combined"));
   }
 
   // mount all routes on /api path

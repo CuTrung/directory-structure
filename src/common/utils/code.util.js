@@ -1,30 +1,4 @@
 module.exports = {
-  createBarcode: (text, includeText = true) => {
-    const svg64 = require("svg64");
-    var JsBarcode = require("jsbarcode");
-    const { DOMImplementation, XMLSerializer } = require("xmldom");
-    const document = new DOMImplementation().createDocument(
-      "http://www.w3.org/1999/xhtml",
-      "html",
-      null,
-    );
-    const svgNode = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "svg",
-    );
-    JsBarcode(svgNode, text, {
-      xmlDocument: document,
-      displayValue: includeText,
-      width: 5,
-      // fontOptions: "bold italic",
-      fontSize: 60,
-      height: 150,
-      format: "CODE39",
-    });
-
-    const svgText = new XMLSerializer().serializeToString(svgNode);
-    return svg64(svgText);
-  },
   createQR: async ({
     data = [],
     file_path_img_center,

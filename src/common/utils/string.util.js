@@ -1,4 +1,4 @@
-const { hashSync, compareSync, genSaltSync } = require("bcrypt");
+const { hashSync, compareSync, genSaltSync } = require("bcryptjs");
 
 const trimString = (value = "", type = "all") => {
   if (typeof value !== "string") return value;

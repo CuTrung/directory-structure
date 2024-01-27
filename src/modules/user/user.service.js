@@ -1,19 +1,13 @@
 // const database = require('../../models');
 const ServiceResponse = require("../../common/responses/service.response");
 const _ = require("lodash");
-const { execProcedure, transaction } = require("../../common/utils/db.util");
 const { getValue } = require("../../common/utils/object.util");
+const { execQuery } = require("../../common/utils/sql/pg.util");
 
 const getListUser = async (body = {}) => {
   try {
-    const dataRecord = await execProcedure("test", {
-      my_name: getValue(body, "my_name", 2),
-    });
-    return new ServiceResponse(
-      true,
-      "Lấy danh sách thành công",
-      dataRecord.recordset,
-    );
+    const res = await execQuery("SELECT * FROM accounts");
+    return new ServiceResponse(true, "Lấy danh sách thành công", res.rows);
   } catch (error) {
     return new ServiceResponse(
       false,
