@@ -2,3 +2,6 @@
 	path = nestjs-microservice
 	url = https://github.com/CuTrung/nestjs-microservice
 
+[submodule "nestjs-microservice-2"]
+	path = nestjs-microservice-2
+	url = https://github.com/CuTrung/nestjs-microservice-2
