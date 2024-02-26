@@ -14,7 +14,8 @@ const Header = ({ collapsed, setCollapsed } = {}) => {
         position: 'sticky',
         top: 0,
         zIndex: 1,
-      }}>
+      }}
+    >
       <Button
         type='text'
         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}

@@ -25,7 +25,8 @@ const Routes = (_routers = routers, routeParent) => {
       path={homePageRouter.path}
       exact={homePageRouter.exact}
       errorElement={Errors}
-      Component={homePageRouter.component}>
+      Component={homePageRouter.component}
+    >
       {routesAccess.map((route) => (
         <Route
           key={route.path}
@@ -34,7 +35,8 @@ const Routes = (_routers = routers, routeParent) => {
           exact={route.exact}
           loader={route.loader}
           errorElement={Errors}
-          Component={route.component}>
+          Component={route.component}
+        >
           {route.children && route.children.length && Routes(route.children, route)}
         </Route>
       ))}

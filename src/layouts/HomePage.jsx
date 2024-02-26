@@ -27,7 +27,8 @@ const HomePage = () => {
                 minHeight: '100vh',
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,
-              }}>
+              }}
+            >
               {outlet}
             </div>
           </Content>

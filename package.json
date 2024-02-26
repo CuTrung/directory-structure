@@ -11,7 +11,8 @@
     "prod": "npm run build && npm run preview",
     "i-prod": "npm i --ignore-scripts",
     "test": "echo 'running test'",
-    "init-husky": "husky && echo npm run test > .husky/pre-commit && echo npm run lint >> .husky/pre-commit && echo npx --no -- commitlint --edit $1 > .husky/commit-msg",
+    "format": "prettier --write .",
+    "init-husky": "husky && type pre-commit > .husky/pre-commit && type commit-msg > .husky/commit-msg",
     "postinstall": "npm run init-husky"
   },
   "dependencies": {
