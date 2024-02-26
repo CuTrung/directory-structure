@@ -12,7 +12,7 @@
     "i-prod": "npm i --ignore-scripts",
     "test": "echo 'running test'",
     "format": "prettier --write .",
-    "init-husky": "husky && type pre-commit > .husky/pre-commit && type commit-msg > .husky/commit-msg",
+    "init-husky": "husky && type husky-prepare\\pre-commit > .husky/pre-commit && type husky-prepare\\commit-msg > .husky/commit-msg",
     "postinstall": "npm run init-husky"
   },
   "dependencies": {
