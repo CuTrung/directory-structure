@@ -12,8 +12,9 @@
     "prod": "npm run build && node dist",
     "i-prod": "npm i --production --ignore-scripts",
     "build": "cross-env NODE_ENV=production webpack .",
-    "format": "eslint . --ext js --report-unused-disable-directives --max-warnings 0 --fix",
-    "init-husky": "husky && echo npm run test > .husky/pre-commit && echo npm run format >> .husky/pre-commit && echo npx --no -- commitlint --edit $1 > .husky/commit-msg",
+    "lint": "eslint . --ext js --report-unused-disable-directives --max-warnings 0 --fix",
+    "format": "prettier --write .",
+    "init-husky": "husky && type husky-prepare\\pre-commit > .husky/pre-commit && type husky-prepare\\commit-msg > .husky/commit-msg",
     "postinstall": "(if exist .husky rmdir /s /q .husky) && npm run init-husky"
   },
   "devDependencies": {
