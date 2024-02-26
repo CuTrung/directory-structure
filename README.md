@@ -1,7 +1,3 @@
-<!-- ![alt text](https://github.com/CuTrung/directory-structure/blob/express/assets/git_workflow.png) -->
-
-#
-
 #### Template commit:
 
 > `action[module]: description + #issue`

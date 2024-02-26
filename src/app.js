@@ -36,7 +36,7 @@ const init = (app) => {
   // parse information user agent
   app.use(useragent.express());
 
-  const staticPath = createDirectory('storage');
+  const staticPath = createDirectory("storage");
   app.use(express.static(staticPath, { index: false }));
 
   app.use(mergeResponse);

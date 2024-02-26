@@ -12,8 +12,8 @@
     "prod": "npm run build && node dist",
     "i-prod": "npm i --production --ignore-scripts",
     "build": "cross-env NODE_ENV=production webpack .",
-    "format": "eslint . --ext js --report-unused-disable-directives --max-warnings 0",
-    "init-husky": "husky install && npx husky add .husky/pre-push \"npm run test && npm run format\" && git add .husky/pre-push && npx husky add .husky/commit-msg \"npx commitlint --edit $1\"",
+    "format": "eslint . --ext js --report-unused-disable-directives --max-warnings 0 --fix",
+    "init-husky": "husky && echo npm run test > .husky/pre-commit && echo npm run format >> .husky/pre-commit && echo npx --no -- commitlint --edit $1 > .husky/commit-msg",
     "postinstall": "(if exist .husky rmdir /s /q .husky) && npm run init-husky"
   },
   "devDependencies": {
@@ -21,7 +21,7 @@
     "@commitlint/config-conventional": "^18.4.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "husky": "^8.0.3",
+    "husky": "^9.0.11",
     "prettier": "^3.1.1"
   },
   "dependencies": {
