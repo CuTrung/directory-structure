@@ -1,0 +1,18 @@
+{
+  "name": "directory-structure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init-husky": "husky && type husky-prepare\\pre-commit > .husky/pre-commit && type husky-prepare\\commit-msg > .husky/commit-msg",
+    "postinstall": "(if exist .husky rmdir /s /q .husky) && npm run init-husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.2",
+    "husky": "^9.0.11"
+  }
+}
