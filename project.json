@@ -1,0 +1,24 @@
+{
+  "name": "nestjs-microservice",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "nestjs-microservice:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "nestjs-microservice:build:development"
+        },
+        "production": {
+          "buildTarget": "nestjs-microservice:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

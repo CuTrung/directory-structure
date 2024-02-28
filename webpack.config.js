@@ -1,18 +1,19 @@
-const path = require("path");
-const nodeExternals = require("webpack-node-externals");
+const { NxWebpackPlugin } = require('@nx/webpack');
+const { join } = require('path');
 
 module.exports = {
-  mode: "production",
-  entry: "./", // Đường dẫn đến file chính của ứng dụng Express
-  target: "node", // Chạy trong môi trường Node.js
   output: {
-    path: path.resolve(__dirname, "dist"), // Thư mục chứa file build
-    filename: "index.js",
+    path: join(__dirname, './dist'),
   },
-  externals: [nodeExternals()], // Loại bỏ các modules không cần thiết
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
-  },
+  plugins: [
+    new NxWebpackPlugin({
+      target: 'node',
+      compiler: 'tsc',
+      main: './src/main.ts',
+      tsConfig: './tsconfig.app.json',
+      assets: ['./src/assets'],
+      optimization: true,
+      outputHashing: 'none',
+    }),
+  ],
 };
