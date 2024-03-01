@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init-husky": "husky && type husky-prepare\\pre-commit > .husky/pre-commit && type husky-prepare\\commit-msg > .husky/commit-msg",
+    "init-husky": "husky && copy husky-prepare\\pre-commit .husky\\pre-commit && copy husky-prepare\\commit-msg .husky\\commit-msg",
     "postinstall": "(if exist .husky rmdir /s /q .husky) && npm run init-husky"
   },
   "keywords": [],
