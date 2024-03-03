@@ -1,0 +1,22 @@
+_format_version: '3.0'
+_transform: true
+
+services:
+  - name: nestjs-microservice
+    host: host.docker.internal
+    port: 1111
+    protocol: http
+    routes:
+      - name: nestjs-microservice_route
+        paths:
+          - /api/nestjs-microservice
+        strip_path: false
+  - name: nestjs-microservice-2
+    host: host.docker.internal
+    port: 2222
+    protocol: http
+    routes:
+      - name: nestjs-microservice-2_route
+        paths:
+          - /api/nestjs-microservice-2
+        strip_path: false
