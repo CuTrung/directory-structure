@@ -1,4 +1,4 @@
-FROM kong:latest
+FROM kong:3.3.1-alpine
 
 ENV KONG_DATABASE="off" \
     KONG_DECLARATIVE_CONFIG="/usr/local/kong/declarative/kong.yml" \

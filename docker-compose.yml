@@ -6,22 +6,27 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+
   nestjs-microservice:
     build:
       context: ./nestjs-microservice
-    depends_on:
-      - rmq
     ports:
       - 1111:1111
+    depends_on:
+      - rmq
     env_file:
       - .env/.nestjs-microservice.env
+
   nestjs-microservice-2:
     build:
       context: ./nestjs-microservice-2
-    depends_on:
-      - rmq
     ports:
       - 2222:2222
+    depends_on:
+      - rmq
+    env_file:
+      - .env/.nestjs-microservice-2.env
+
   kong:
     build:
       context: ./kong
