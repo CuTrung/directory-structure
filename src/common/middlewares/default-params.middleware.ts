@@ -11,7 +11,7 @@ const _setHeaders = (headers: IncomingHttpHeaders) => {
     [HttpHeaders.REQUEST_ID]:
       headers[HttpHeaders.REQUEST_ID] ?? stringService.genRandom(),
     [HttpHeaders.VERSION]:
-      headers[HttpHeaders.VERSION] ?? configService.get('api_version'),
+      headers[HttpHeaders.VERSION] ?? configService.get('API_VERSION'),
   };
   for (const [key, value] of Object.entries(instance)) {
     headers[key] = value;

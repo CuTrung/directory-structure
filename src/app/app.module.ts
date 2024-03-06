@@ -1,4 +1,4 @@
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -8,6 +8,8 @@ import { APP_GUARD } from '@nestjs/core';
 import { UtilsModule } from 'src/common/utils/utils.module';
 import { UtilsService } from 'src/common/utils/utils.service';
 import { UserModule } from './user/user.module';
+import { MongoModule } from 'src/common/db/nosql/mongo/mongo.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -28,6 +30,9 @@ import { UserModule } from './user/user.module';
     }),
     UtilsModule,
     UserModule,
+    new MongoModule().register({
+      maxPoolSize: 20,
+    }),
   ],
   controllers: [AppController],
   providers: [

@@ -9,10 +9,8 @@ async function bootstrap() {
   let app = await NestFactory.create(AppModule, {
     logger: LoggerCustom,
   });
-  const { port, url, node_env, ...envs_var } = app
-    .get(ConfigService)
-    .get('env');
-  app = await initApp(app, envs_var);
+  const { port, url, node_env } = app.get(ConfigService).get('env');
+  app = await initApp(app);
   await app.listen(port);
   Logger.log(`🚀 Application is running on: ${url} (${node_env})`);
 }
