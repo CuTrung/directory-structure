@@ -15,7 +15,6 @@ export class FormatResponseInterceptor implements NestInterceptor {
     const { getRequest, getResponse } = context.switchToHttp();
     const req = getRequest<Request>();
     const res = getResponse<Response>();
-    console.log('>>> check', res.statusCode);
     return next.handle().pipe(
       map((data) => {
         return this.apiService.formatResponse({

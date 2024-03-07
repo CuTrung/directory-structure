@@ -1,18 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
-import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './user.module';
+import { MongooseModule, getModelToken } from '@nestjs/mongoose';
 import { User, UserSchema } from './entities/user.entity';
-import { MongoModule } from 'src/common/db/nosql/mongo/mongo.module';
+import { MongoService } from 'src/common/db/nosql/mongo/mongo.service';
+import { Model } from 'mongoose';
 describe('UserService', () => {
   let service: UserService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        MongoModule,
-        MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+      providers: [
+        UserService,
+        MongoService,
+        {
+          provide: getModelToken(User.name),
+          useValue: {}, // Add any necessary mock or fake implementation here
+        },
       ],
-      providers: [UserService],
     }).compile();
 
     service = module.get<UserService>(UserService);

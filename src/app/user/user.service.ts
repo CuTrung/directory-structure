@@ -12,14 +12,19 @@ export class UserService {
     @InjectModel(User.name) private userModel: Model<User>,
     private mongoService: MongoService<User>
   ) {
-    this.mongoService.setModel(this.userModel);
+    this.mongoService.setModel = this.userModel;
   }
   create(createUserDto: CreateUserDto) {
     return this.userModel.create(createUserDto);
   }
 
   findAll(): Promise<User[]> {
-    return this.mongoService.omit(['__v']);
+    return this.mongoService.find(
+      {},
+      {
+        __v: 0,
+      }
+    );
   }
 
   findOne(id: string) {
