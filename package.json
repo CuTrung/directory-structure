@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "init-husky": "husky && copy husky-prepare\\pre-commit .husky\\pre-commit && copy husky-prepare\\commit-msg .husky\\commit-msg",
     "postinstall": "(if exist .husky rmdir /s /q .husky) && npm run init-husky"
@@ -14,5 +15,8 @@
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.2",
     "husky": "^9.0.11"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
   }
 }
