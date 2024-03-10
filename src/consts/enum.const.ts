@@ -21,3 +21,8 @@ export enum HttpHeaders {
   VERSION = 'x-version',
   REQUEST_ID = 'x-request-id',
 }
+
+export enum TypeMethod {
+  GRAPHQL = 'graphql',
+  HTTP = 'http',
+}

@@ -8,7 +8,6 @@ import { APP_GUARD } from '@nestjs/core';
 import { UtilsModule } from 'src/common/utils/utils.module';
 import { UtilsService } from 'src/common/utils/utils.service';
 import { UserModule } from './user/user.module';
-import { MongoModule } from 'src/common/db/nosql/mongo/mongo.module';
 
 @Module({
   imports: [
@@ -19,27 +18,27 @@ import { MongoModule } from 'src/common/db/nosql/mongo/mongo.module';
       load: [getEnvs],
       validationSchema,
     }),
-    ThrottlerModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => [
-        {
-          ttl: config.get('throttle_ttl'),
-          limit: config.get('throttle_limit'),
-        },
-      ],
-    }),
+    // ThrottlerModule.forRootAsync({
+    //   inject: [ConfigService],
+    //   useFactory: (config: ConfigService) => [
+    //     {
+    //       ttl: config.get('throttle_ttl'),
+    //       limit: config.get('throttle_limit'),
+    //     },
+    //   ],
+    // }),
     UtilsModule,
     UserModule,
-    new MongoModule().register({
-      maxPoolSize: 20,
-    }),
+    // new MongoModule().register({
+    //   maxPoolSize: 20,
+    // }),
   ],
   controllers: [AppController],
   providers: [
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: ThrottlerGuard,
+    // },
     AppService,
     UtilsService,
   ],
