@@ -1,20 +1,9 @@
-import {
-  BadRequestException,
-  ExecutionContext,
-  Logger,
-  Module,
-} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserResolver } from './user.resolver';
-import {
-  GqlArgumentsHost,
-  GqlExecutionContext,
-  GraphQLModule,
-} from '@nestjs/graphql';
+import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { join, resolve } from 'path';
 import { ConfigService } from '@nestjs/config';
-
 @Module({
   imports: [
     GraphQLModule.forRootAsync<ApolloDriverConfig>({

@@ -1,9 +1,4 @@
-import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { Observable } from 'rxjs';
 import { TypeMethod } from 'src/consts';
@@ -15,8 +10,11 @@ export class AuthGuard implements CanActivate {
   ): boolean | Promise<boolean> | Observable<boolean> {
     const type_method = context.getType<string>();
     if (type_method === TypeMethod.GRAPHQL) {
-      const ctx = GqlExecutionContext.create(context).getContext();
+      const gqlCtx = GqlExecutionContext.create(context);
+      const ctx = gqlCtx.getContext();
       const req = ctx.req;
+      const info = gqlCtx.getInfo();
+      const route = info.fieldName;
     }
 
     // const { getRequest } = context.switchToHttp();
