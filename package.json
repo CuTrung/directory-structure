@@ -9,7 +9,7 @@
     "start": "node --watch .",
     "dev": "npm start --trace-warnings --inspect",
     "test": "jest",
-    "prod": "npm run build && node dist",
+    "prod": "node dist",
     "i-prod": "npm i --production --ignore-scripts",
     "build": "cross-env NODE_ENV=production webpack .",
     "lint": "eslint . --ext js --report-unused-disable-directives --max-warnings 0 --fix",
