@@ -1,10 +1,6 @@
 [submodule "nestjs-microservice"]
-	path = nestjs-microservice
+	path = services/nestjs-microservice
 	url = https://github.com/CuTrung/nestjs-microservice
-
 [submodule "nestjs-microservice-2"]
-	path = nestjs-microservice-2
+	path = services/nestjs-microservice-2
 	url = https://github.com/CuTrung/nestjs-microservice-2
-
-# Clone service needed
-# git submodule update --init --remote <path>
