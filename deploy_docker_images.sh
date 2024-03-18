@@ -1,8 +1,10 @@
 #!/bin/bash
 docker_repo=writecodesmoothly
-for folder in services/*; do
+services_folder=services
+
+for folder in ${services_folder}/*; do
     if [ -e $folder/Dockerfile ]; then
-        service=$(echo "$folder" | awk -F 'services/' '{print $2}')
+        service=$(echo "$folder" | awk -F "${services_folder}/" '{print $2}')
         image=${docker_repo}/${service%/}:latest
         echo ">>> Building ${service%/}"
         cd $folder
